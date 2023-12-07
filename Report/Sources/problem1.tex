@@ -1,2 +1,23 @@
 \section{Πρόβλημα 1}
 
+Τα contour lines της συνάρτησης $f(x,y)$ που δίνεται στην εκφώνηση παράγεται με τον ακόλουθο κώδικα MATLAB και πορουσιάζεται στην εικόνα~\ref{fig:prob_1_contour_lines}.
+
+\begin{lstlisting}[]
+function [Z] = plot_contour(start_num, end_num)
+	
+	x = linspace(start_num, end_num, 100);
+	y = x;
+	[X, Y] = meshgrid(x, y);
+	Z = X.^2 + 4*x.*Y + Y.^2;
+	contour(X, Y, Z, 40);
+	xlabel('X');
+	ylabel('Y');
+end
+\end{lstlisting}
+\begin{figure}[h]
+	\centering
+	\includesvg[width=0.5\textwidth]{../Problem 1/contour_lines.svg}
+	\caption{Οι contour lines της συνάρτησης $f(x,y)$}
+	\label{fig:prob_1_contour_lines}
+\end{figure}
+

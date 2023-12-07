@@ -18,7 +18,14 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tabularray}
-\usepackage{hyperref}
+\usepackage[framed]{matlab-prettifier}
+\usepackage{svg}
+
+\usepackage[pdfauthor={Αλεξάνδρα Γιάννη, Νίκος Στυλιανού},
+pdftitle={Πρώτο σετ ασκήσεων},
+pdfcreator={TeX},
+pdfsubject={ECE447 - ΝευροΑσαφής Υπολογιστική}]{hyperref}
+
 
 \hypersetup{
 	colorlinks,
@@ -26,6 +33,13 @@
 	filecolor=black,
 	linkcolor=black,
 	urlcolor=blue
+}
+
+\lstset{
+	style              = Matlab-editor,
+	basicstyle         = \footnotesize,
+	escapechar         = ",
+	mlshowsectionrules = true,
 }
 
 \setmainfont{Linux Libertine O}
