@@ -3,6 +3,7 @@
 *.dvi
 *.lof
 *.lot
+*.log
 *.bit
 *.idx
 *.glo
