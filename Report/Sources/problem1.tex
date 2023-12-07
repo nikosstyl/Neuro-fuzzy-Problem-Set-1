@@ -8,7 +8,7 @@ function [Z] = plot_contour(start_num, end_num)
 	x = linspace(start_num, end_num, 100);
 	y = x;
 	[X, Y] = meshgrid(x, y);
-	Z = X.^2 + 4*x.*Y + Y.^2;
+	Z = X.^2 + 4*X.*Y + Y.^2;
 	contour(X, Y, Z, 40);
 	xlabel('X');
 	ylabel('Y');
@@ -21,3 +21,61 @@ end
 	\label{fig:prob_1_contour_lines}
 \end{figure}
 
+%Η συνάρτηση $f$ είναι μορφής quadratic, αλλά υπό μορφή πινάκων γράφεται όπως παρακάτω:
+%\begin{equation}
+%\begin{gathered}
+%f(x,y) = x^2 + 4xy + y^2 = x^2 + 2xy + 2xy + y^2 = \left( x^2 + 2xy \right) + \left( 2xy + y^2 \right), \quad \text{άρα} \\ 
+%Q(x) = X^T A \MathSpace X = 
+%\left[
+%\begin{array}{cc}
+%	x & y
+%\end{array}
+%\right]
+%\left[
+%\begin{array}{cc}
+%	1 & 2 \\
+%	2 & 1 \\
+%\end{array}
+%\right]
+%\left[
+%\begin{array}{c}
+%	x\\y
+%\end{array}
+%\right]
+%\end{gathered}
+%\end{equation}
+
+Η γενική εξίσωση μιας quadratic συνάρτησης είναι η $f(x,y) = ax^2 + 2bxy + cy^2$, παίρνοντας έτσι τους συντελεστές $a=1, \MathSpace b=2, \MathSpace c=1$.
+Ο υπολογισμός της διακρίνουσας μπορεί να μας βοηθήσει να υπολογίσουμε το σημείο όπου βρίσκεται το τοπικό ακρότατο της συνάρτησης. 
+\begin{equation}
+\begin{gathered}
+D =
+\left[
+\begin{array}{cc}
+	f_{xx} & f_{xy} \\
+	f_{yx} & f_{yy} \\
+\end{array}
+\right]
+= f_{xx} f_{yy} - f^2_{xy} = 2 \times 2 - 4^2 = -12 < 0, \quad \text{όπου} \\
+f_{xx} = \frac{\partial^2 f}{\partial x^2} = 2, \quad
+f_{yy} = \frac{\partial^2 f}{\partial y^2} = 2, \quad
+f_{xy} = \frac{\partial}{\partial y} \left( \frac{\partial f}{\partial x} \right) = 4
+%D = 2 \times 2 - 4^2 = -12 < 0.
+\end{gathered}
+\end{equation}
+´Άρα, αρκεί να βρούμε το σημείο όπου $\frac{\partial f}{\partial x}$ και $\frac{\partial f}{\partial y}$ ισούνται με 0. Έτσι, το σημείο αυτό θα είναι saddle point ή σημείο καμπής όπου οι κλίσεις στις ορθογώνιες κατευθύνσεις είναι όλες μηδέν, αλλά το οποίο δεν αποτελεί τοπικό άκρο της συνάρτησης.
+Συγκεκριμένα έχουμε: 
+\begin{equation}
+\left\{
+\begin{array}{c}
+	\frac{\partial f}{\partial x} = 2x + 4y = 0 \\ 
+	\frac{\partial f}{\partial y} = 4x + 2y = 0 \\
+\end{array}
+\right.
+\Rightarrow
+\left\{
+\begin{array}{c}
+	x = 0\\y=0\\
+\end{array}
+\right.
+\end{equation}
