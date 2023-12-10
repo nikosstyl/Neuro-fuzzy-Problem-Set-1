@@ -1,0 +1,13 @@
+% !TeX spellcheck = en_US
+\section{Problem 12}
+
+In order to evaluate the expression "\verb|not(A(x) OR B(x))|", we first have to take a look in how fuzzy logic is different with binary logic at the operation level.
+In binary logic we have three basic operations: \verb*|AND(x,y)|, \verb*|OR(x,y)| and \verb*|NOT(x)|. But, in fuzzy logic, where a function can have a value in range of $\left[0..1\right]$, things are a bit different.
+Operation \verb*|AND(x,y)| of binary is equivalent with \verb|MIN(x,y)| from the fuzzy logic, \verb*|OR(x,y)| with \verb*|MAX(x,y)| and \verb*|NOT(x)| with \verb|1-x|.
+
+Taking a look into the functions \verb*|A| and \verb*|B| from figure~\ref{}
+
+\begin{figure}
+	\centering
+	\includesvg[width=0.5\textwidth]{../Problem 12/a_b_functions.svg}
+\end{figure}
