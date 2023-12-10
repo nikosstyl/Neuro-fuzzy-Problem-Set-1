@@ -1,9 +1,9 @@
+% !TeX spellcheck = en_US
 \documentclass[a4paper,12pt]{article}
-\usepackage{lipsum}
 \usepackage{listings}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage{fontspec}
-\usepackage[greek]{babel}
+\usepackage[greek, english]{babel}
 \usepackage[super]{nth}
 \usepackage{fancyhdr}
 \usepackage[left=1.50cm, right=1.50cm, top=2cm, bottom=1.cm, includeheadfoot]{geometry}
@@ -20,11 +20,12 @@
 \usepackage{tabularray}
 \usepackage[framed]{matlab-prettifier}
 \usepackage{svg}
+\usepackage{nth}
 
-\usepackage[pdfauthor={Αλεξάνδρα Γιάννη, Νίκος Στυλιανού},
-pdftitle={Πρώτο σετ ασκήσεων},
+\usepackage[pdfauthor={Alexandra Gianni, Nikos Stylianou},
+pdftitle={First Problem Set},
 pdfcreator={TeX},
-pdfsubject={ECE447 - ΝευροΑσαφής Υπολογιστική}]{hyperref}
+pdfsubject={ECE447 - Neuro-Fuzzy Computing}]{hyperref}
 
 
 \hypersetup{
@@ -46,8 +47,8 @@ pdfsubject={ECE447 - ΝευροΑσαφής Υπολογιστική}]{hyperref}
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[l]{\footnotesize 1ο σετ ασκήσεων}
-\fancyhead[r]{\footnotesize Νευρο-ασαφής υπολογιστική}
+\fancyhead[l]{\footnotesize \nth{1} Problem Set}
+\fancyhead[r]{\footnotesize Neuro-Fuzzy Computing}
 %\fancyfoot[r]{\footnotesize \thepage}
 \renewcommand{\footrulewidth}{0.4pt} % Line at the footer visible
 
@@ -78,7 +79,7 @@ pdfsubject={ECE447 - ΝευροΑσαφής Υπολογιστική}]{hyperref}
 		
 		\textsc{\LARGE University of Thessaly}\\[1.6cm] % Name of your university/college
 		\includegraphics[scale=.5]{Images/uth-logo.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
-		\textsc{\Large Νευρο-ασαφής Υπολογιστική}\\[0.6cm] % Major heading such as course name
+		\textsc{\Large Neuro-Fuzzy Computing}\\[0.6cm] % Major heading such as course name
 		\textsc{\large ECE447}\\[0.5cm] % Minor heading such as course title
 		
 		%----------------------------------------------------------------------------------------
@@ -86,7 +87,7 @@ pdfsubject={ECE447 - ΝευροΑσαφής Υπολογιστική}]{hyperref}
 		%----------------------------------------------------------------------------------------
 		
 		\HRule \\[0.5cm]
-		{ \huge Σετ προβλημάτων 1}\\[0.4cm] % Title of your document
+		{ \huge \nth{1} Problem Set}\\[0.4cm] % Title of your document
 		\HRule \\[1.8cm]
 		
 		%----------------------------------------------------------------------------------------
@@ -98,13 +99,9 @@ pdfsubject={ECE447 - ΝευροΑσαφής Υπολογιστική}]{hyperref}
 		\begin{minipage}{\textwidth}
 			\centering
 			\begin{tblr}{cc}
-				 \emph{{\LARGE Αλεξάνδρα Γιάννη}} & \emph{{\LARGE Νίκος Στυλιανού}} \\ [3mm]
-				 \emph{{\LARGE AEM: 3382}} & \emph{{\LARGE AEM: 2917}} \\
+				 \emph{{\LARGE Alexandra Gianni}} & \emph{{\LARGE Nikos Stylianou}} \\ [3mm]
+				 \emph{{\LARGE ID: 3382}} & \emph{{\LARGE ID: 2917}} \\
 			\end{tblr}
-%			\begin{center} \large
-%				\emph{{\LARGE Αλεξάνδρα Γιάννη }} \\[3mm]
-%				\emph{\LARGE ΑΕΜ: 3382}
-%			\end{center}
 		\end{minipage}\\[2.5cm]
 		
 		% If you don't want a supervisor, uncomment the two lines below and remove the section above

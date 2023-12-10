@@ -1,6 +1,8 @@
-\section{Πρόβλημα 1}
+% !TeX spellcheck = en_US
+\section{Problem 1}
 
-Τα contour lines της συνάρτησης $f(x,y)$ που δίνεται στην εκφώνηση παράγεται με τον ακόλουθο κώδικα MATLAB και πορουσιάζεται στην εικόνα~\ref{fig:prob_1_contour_lines}.
+%Τα contour lines της συνάρτησης $f(x,y)$ που δίνεται στην εκφώνηση παράγεται με τον ακόλουθο κώδικα MATLAB και πορουσιάζεται στην εικόνα~\ref{fig:prob_1_contour_lines}.
+Contour lines of $f(x,y)$ given are produced with the following MATLAB code and are presented in figure~\ref{fig:prob_1_contour_lines}.
 
 \begin{lstlisting}[]
 function [Z] = plot_contour(start_num, end_num)
@@ -16,37 +18,23 @@ end
 \end{lstlisting}
 \begin{figure}[h]
 	\centering
-	\includesvg[width=0.5\textwidth]{../Problem 1/contour_lines.svg}
-	\caption{Οι contour lines της συνάρτησης $f(x,y)$}
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=\textwidth]{../Problem 1/contour_lines_2d.png}
+		\caption{2D Plot}
+		\label{fig:prob_1_contour_lines_2d}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		\includesvg[width=\textwidth]{../Problem 1/contour_lines_3d.svg}
+		\caption{3D Plot}
+		\label{fig:prob_1_contour_lines_3d}
+	\end{subfigure}
+	\caption{Contour lines of $f(x,y)$ }
 	\label{fig:prob_1_contour_lines}
 \end{figure}
 
-%Η συνάρτηση $f$ είναι μορφής quadratic, αλλά υπό μορφή πινάκων γράφεται όπως παρακάτω:
-%\begin{equation}
-%\begin{gathered}
-%f(x,y) = x^2 + 4xy + y^2 = x^2 + 2xy + 2xy + y^2 = \left( x^2 + 2xy \right) + \left( 2xy + y^2 \right), \quad \text{άρα} \\ 
-%Q(x) = X^T A \MathSpace X = 
-%\left[
-%\begin{array}{cc}
-%	x & y
-%\end{array}
-%\right]
-%\left[
-%\begin{array}{cc}
-%	1 & 2 \\
-%	2 & 1 \\
-%\end{array}
-%\right]
-%\left[
-%\begin{array}{c}
-%	x\\y
-%\end{array}
-%\right]
-%\end{gathered}
-%\end{equation}
+A general formula of a quadratic equation is $f(x,y) = ax^2 + 2bxy + cy^2$. Writing our formula in the previous form, we find that $a=1, \MathSpace b=2, \MathSpace c=1$.
+Calculation of discriminant can help us calculate the location of function's local minimum/maximum.
 
-Η γενική εξίσωση μιας quadratic συνάρτησης είναι η $f(x,y) = ax^2 + 2bxy + cy^2$, παίρνοντας έτσι τους συντελεστές $a=1, \MathSpace b=2, \MathSpace c=1$.
-Ο υπολογισμός της διακρίνουσας μπορεί να μας βοηθήσει να υπολογίσουμε το σημείο όπου βρίσκεται το τοπικό ακρότατο της συνάρτησης. 
 \begin{equation}
 \begin{gathered}
 D =
@@ -60,11 +48,12 @@ D =
 f_{xx} = \frac{\partial^2 f}{\partial x^2} = 2, \quad
 f_{yy} = \frac{\partial^2 f}{\partial y^2} = 2, \quad
 f_{xy} = \frac{\partial}{\partial y} \left( \frac{\partial f}{\partial x} \right) = 4
-%D = 2 \times 2 - 4^2 = -12 < 0.
+D = 2 \times 2 - 4^2 = -12 < 0.
 \end{gathered}
 \end{equation}
-´Άρα, αρκεί να βρούμε το σημείο όπου $\frac{\partial f}{\partial x}$ και $\frac{\partial f}{\partial y}$ ισούνται με 0. Έτσι, το σημείο αυτό θα είναι saddle point ή σημείο καμπής όπου οι κλίσεις στις ορθογώνιες κατευθύνσεις είναι όλες μηδέν, αλλά το οποίο δεν αποτελεί τοπικό άκρο της συνάρτησης.
-Συγκεκριμένα έχουμε: 
+
+So, we only have to find the point where $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$ are equal to $0$. Thus, this point will be a saddle point where gradients in each orthogonal direction are $0$, but this point is not either a local minimum or maximum.
+Specifically:
 \begin{equation}
 \left\{
 \begin{array}{c}
@@ -79,4 +68,4 @@ f_{xy} = \frac{\partial}{\partial y} \left( \frac{\partial f}{\partial x} \right
 \end{array}
 \right.
 \end{equation}
-Άρα, το σημείο $(x,y) = (0,0)$ είναι το saddle point για την συνάρτηση που δίνεται και αυτό γίνεται γνωστό και από τις contour lines της συνάρτησης.
+Thus, the point $(x,y) = (0,0)$ is the saddle point mentioned before for the function given and this can be justified using the plotted contour lines.
