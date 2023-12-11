@@ -8,10 +8,12 @@ function [Z] = plot_contour(start_num, end_num)
     contour3(X, Y, Z, 50);
     colorbar;
     set(gca, "FontName", "Times New Roman");
+    exportgraphics(gca, 'contour_lines_3d.pdf', 'ContentType','vector');
     figure(2);
     contour(X, Y, Z, 50);
     colorbar;
-    % set(gca, "FontName", "Linux Libertine O");
+    set(gca, "FontName", "Times New Roman");
+    exportgraphics(gca, 'contour_lines_2d.pdf', 'ContentType','vector');
     xlabel('X');
     ylabel('Y');
 

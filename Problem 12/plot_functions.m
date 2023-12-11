@@ -25,8 +25,11 @@ function [] = plot_functions ()
     B(1, i7:size) = 1;
 
     figure(1);
-    plot(x, A, x, B, "LinEwidth", 2);
-
+    plot(x, A, x, B, "LinEwidth", 1.2);
+    axis tight;
+    grid on;
+    legend('A(x)', 'B(x)');
+    exportgraphics(gca, 'a_b_functions.pdf', 'ContentType', 'vector');
 end
 
 function [i] = find_num (x, num_to_find, tolerance)
