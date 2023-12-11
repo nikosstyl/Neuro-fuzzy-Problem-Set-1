@@ -18,7 +18,7 @@ To achieve this, we will have to break down our calculations in areas.
 Starting with $x \le 2$, $"A(x) \text{ AND } B(x)"$ is equal to $"\max\left(A(x), B(x)\right)" = 1$. So, using De Morgan's law, we have $\textit{max}\left(A(x), B(x)\right) = \textit{not}\left(A(x) \textit{ or } B(x)\right) = 0$.
 The exact same result is obtained at $x \ge 7$.
 
-Things are a bit different in $2 \le x \le 7$. Function $A(x)$ starts to fall while $B(x)$ starts to rise. The point where they cross is valuable for defining the expression needed and can be found by solving the equation 
+Things are a bit different in $2 \le x \le 7$. Function $A(x)$ starts to fall while $B(x)$ starts to rise. The point where they cross is valuable for defining the expression needed and can be found by solving the equation:
 \[
 A(x) = B(x) \Leftrightarrow 1 - \frac{x-2}{3} = \frac{x-3}{4} \Rightarrow x = \frac{29}{7}
 \]
@@ -31,9 +31,9 @@ Therefore, the expression $f(x) = \textit{not}\left(A(x) \textit{ or } B(x)\righ
 \begin{equation}
 	f(x) = \left\{
 	\begin{array}{cc}
-		0 & x \le 2, \\[3pt]
-		\dfrac{x-2}{3} & 2 \le x \le \frac{29}{7}, \\[7pt]
-		1 - \dfrac{x-3}{4} & \frac{29}{7} \le x \le 7, \\[3pt]
+		0 & x \le 2, \\[4mm]
+		\dfrac{x-2}{3} & 2 \le x \le \frac{29}{7}, \\[4mm]
+		1 - \dfrac{x-3}{4} & \frac{29}{7} \le x \le 7, \\[4mm]
 		0 & x \ge 7\\
 	\end{array}
 	\right.
