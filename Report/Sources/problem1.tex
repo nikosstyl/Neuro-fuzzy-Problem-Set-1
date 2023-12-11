@@ -1,7 +1,7 @@
 % !TeX spellcheck = en_US
 \section{Problem 1}
 
-Contour lines of $f(x,y)$ are plotted with the following MATLAB code and are presented in figure~\ref{fig:prob_1_contour_lines}.
+The contour lines of $f(x,y)$ are plotted with the following MATLAB code and are presented in figure~\ref{fig:prob_1_contour_lines}.
 
 \begin{lstlisting}[]
 function [Z] = plot_contour(start_num, end_num)
@@ -32,7 +32,7 @@ end
 \end{figure}
 
 A general formula of a quadratic equation is $f(x,y) = ax^2 + 2bxy + cy^2$. Writing our formula in the previous form, we find that $a=1, \MathSpace b=2, \MathSpace c=1$.
-Calculation of discriminant can help us calculate the location of function's local minimum/maximum.
+Calculation of the discriminant can help us calculate the location of the function's local minimum/maximum.
 
 \begin{equation}
 \begin{gathered}
@@ -51,8 +51,8 @@ D = 2 \times 2 - 4^2 = -12 < 0.
 \end{gathered}
 \end{equation}
 
-So, we only have to find the point where $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$ are equal to $0$. Thus, this point will be a saddle point where gradients in each orthogonal direction are $0$, but this point is not either a local minimum or maximum.
-Specifically:
+So, we only have to find the point at which $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$ are equal to $0$. This point will be a saddle point at which the gradients in each orthogonal direction are $0$, but this point is neither a local minimum nor a maximum.
+More precisely:
 \begin{equation}
 \left\{
 \begin{array}{c}
@@ -67,4 +67,4 @@ Specifically:
 \end{array}
 \right.
 \end{equation}
-Thus, the point $(x,y) = (0,0)$ is the saddle point mentioned before for the function given and this can be justified using the plotted contour lines.
+Thus, the point $(x,y) = (0,0)$ is the saddle point mentioned for the given function and this can be justified using the plotted contour lines.
