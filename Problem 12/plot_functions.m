@@ -1,4 +1,4 @@
-function [] = plot_functions (creat_pdf_bool)
+function [A,B, f] = plot_functions (creat_pdf_bool)
 
     if nargin == 0
         creat_pdf_bool = false;
@@ -32,9 +32,35 @@ function [] = plot_functions (creat_pdf_bool)
     plot(x, A, x, B, "LinEwidth", 1.2);
     axis tight;
     grid on;
+    xlabel('X');
+    ylabel('Y');
     legend('A(x)', 'B(x)');
+    set(gca, "FontName", "Times New Roman");
     if creat_pdf_bool == true
         exportgraphics(gca, 'a_b_functions.pdf', 'ContentType', 'vector');
+    end
+
+    a_b_midpoint = 29/7;
+    i_a_b_midpoint = find_num(x, a_b_midpoint, tol);
+    
+    f = zeros(1, size);
+
+    f(1, 1:i2) = 0;
+    f(1, i2:i_a_b_midpoint) = (x(1, i2:i_a_b_midpoint)-2) / 3;
+    f(1, i_a_b_midpoint:i7) = 1 - (x(1, i_a_b_midpoint:i7)-3)/4;
+    f(1, i7:size) = 0;
+
+    figure(2);
+    plot(x, f, "LineWidth", 1.2, 'Color', "#77AC30");
+    axis tight;
+    grid on;
+    xlabel('X');
+    ylabel('Y');
+    xline(a_b_midpoint);
+    legend('not(A(x) OR B(x))');
+    set(gca, "FontName", "Times New Roman");
+    if creat_pdf_bool == true
+        exportgraphics(gca, 'expression_plot.pdf', 'ContentType', 'vector');
     end
 end
 

@@ -19,6 +19,9 @@
 *.run.xml
 *.synctex.gz
 
+# Matlab metafiles
+.aux
+
 # Inkscape svg
 svg-inkscape/
 *.log
