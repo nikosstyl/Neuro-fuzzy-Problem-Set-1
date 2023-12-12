@@ -1,4 +1,8 @@
-function [] = plot_functions ()
+function [] = plot_functions (creat_pdf_bool)
+
+    if nargin == 0
+        creat_pdf_bool = false;
+    end
 
     size = 1000;
     tol = 1e-2;
@@ -29,7 +33,9 @@ function [] = plot_functions ()
     axis tight;
     grid on;
     legend('A(x)', 'B(x)');
-    exportgraphics(gca, 'a_b_functions.pdf', 'ContentType', 'vector');
+    if creat_pdf_bool == true
+        exportgraphics(gca, 'a_b_functions.pdf', 'ContentType', 'vector');
+    end
 end
 
 function [i] = find_num (x, num_to_find, tolerance)
