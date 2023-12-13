@@ -29,12 +29,12 @@ S(x) = \dfrac{e^x - e^{-x}}{e^x + e^{-x}}
 \]
 
 Its derivative is 
-\[
+\begin{equation}
 \begin{gathered}
 \frac{dS}{dx} = \dfrac{\left(e^x +e^{-x} \right)\left(e^x +e^{-x} \right) - \left(e^x - e^{-x} \right)\left(e^x - e^{-x} \right)}{\left(e^x + e^{-x} \right)^2} = \\
 = \dfrac{\left( e^x + e^{-x} \right)^2 - \left( e^x - e^{-x} \right)^2}{\left( e^x + e^{-x} \right)^2} = 1- \left(\dfrac{e^x - e^{-x}}{e^x + e^{-x}}\right)^2 = 1 - S^2(x)
 \end{gathered}
-\]
+\end{equation}
 
 \subsection{Swish}
 
@@ -62,6 +62,17 @@ So, continuing with the derivative:
 \end{gathered}
 \]
 Let $\sigma = \dfrac{1}{1 + e^{-x}}$, thus 
-\[
+\begin{equation}
 \frac{dS}{dx} = \frac{S(x)}{x} + S(x) - \frac{S^2(x)}{x} = \sigma + S(x) - \sigma S(x) = S(x) + \sigma \left( 1 - S(x) \right)
+\end{equation}
+
+\subsection{Custom tanh}
+
+Activation function is
+\[
+S(x) = x \times \tanh\left( \ln \left( 1 + e^x\right) \right) = \dfrac{x \left( 1+e^x \right) - \dfrac{x}{1+e^x}}{1+e^x + \dfrac{1}{1+e^x}}
+\]
+After some calculations, we can observe a relationship to the Swish function:
+\[
+S(x) = \dfrac{x \left( 1+e^x \right) - T(-x)}{1+e^x + \dfrac{1}{1+e^x}} = \dfrac{\dfrac{-x^2}{T(-x)} - T(-x)}{\dfrac{-x}{T(-x)} + \dfrac{T(-x)}{x}} = \frac{-x^3 - T^2(-x)}{-x^2 + T^2(-x)}
 \]
