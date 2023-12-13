@@ -1,0 +1,29 @@
+% !TeX spellcheck = en_US
+\section{Problem 8}
+
+In this problem, we will express the derivatives in respect to the matching activation function.
+
+\subsection{LogSig}
+
+This activation function is expressed as
+\[
+S(x) = \dfrac{1}{1 + e^{-x}}
+\]
+Multiplying itself with $\left(1 + e^{-x}\right)$ gives
+\[
+\left(1 + e^{-x}\right) \MathSpace S(x) = 1 \Leftrightarrow e^{-x} = \frac{1}{S(x)} - 1
+\]
+So, activation function's derivative will be
+\[
+\begin{aligned}[c]
+\dfrac{dS}{dx} &= \dfrac{d\left(\left(1+e^{-x}\right)^{-1}\right)}{dx} = \left(1+e^{-x}\right)^{-2} \MathSpace e^{-x} = S^2(x) \MathSpace \left(\dfrac{1}{S(x)} -1 \right) \\
+&= S(x) - S^2(x) = S(x) \MathSpace \left( 1 - S(x) \right)
+\end{aligned}
+\]
+
+\subsection{TanSig}
+
+Activation function is 
+\[
+S(x) = \dfrac{e^x - e^{-x}}{e^x + e^{-x}}
+\]
