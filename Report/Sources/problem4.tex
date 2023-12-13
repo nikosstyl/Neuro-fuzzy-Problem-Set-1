@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_US
-\section{Problem 8}
+\section{Problem 4}
 
 In this problem, we will express the derivatives in respect to the matching activation function.
 
@@ -26,4 +26,42 @@ So, activation function's derivative will be
 Activation function is 
 \[
 S(x) = \dfrac{e^x - e^{-x}}{e^x + e^{-x}}
+\]
+
+Its derivative is 
+\[
+\begin{gathered}
+\frac{dS}{dx} = \dfrac{\left(e^x +e^{-x} \right)\left(e^x +e^{-x} \right) - \left(e^x - e^{-x} \right)\left(e^x - e^{-x} \right)}{\left(e^x + e^{-x} \right)^2} = \\
+= \dfrac{\left( e^x + e^{-x} \right)^2 - \left( e^x - e^{-x} \right)^2}{\left( e^x + e^{-x} \right)^2} = 1- \left(\dfrac{e^x - e^{-x}}{e^x + e^{-x}}\right)^2 = 1 - S^2(x)
+\end{gathered}
+\]
+
+\subsection{Swish}
+
+Activation function is
+\[
+S(x) = \dfrac{x}{1 + e^{-x}}
+\]
+The derivative in respect to $x$ is 
+\[
+\begin{gathered}
+\frac{dS}{dx} = \dfrac{1 + e^{-x} + x e^{-x}}{\left( 1 + e^{-x} \right)^2} = \frac{1 + e^{-x}}{\left( 1 + e^{-x} \right)^2} + \frac{xe^{-x}}{\left( 1 + e^{-x} \right)^2} = \frac{1}{1+e^{-x}} + x \frac{e^{-x}}{\left( 1 + e^{-x} \right)^2}
+\end{gathered}
+\]
+Rewriting the function gives us
+\[
+\frac{S(x)}{x} = \frac{1}{1 + e^{-x}} \quad \text{and} \quad e^{-x} = \frac{x-S(x)}{S(x)}
+\]
+
+So, continuing with the derivative:
+\[
+\begin{gathered}
+\frac{dS}{dx} = \frac{1}{1+e^{-x}} + x \frac{e^{-x}}{\left( 1 + e^{-x} \right)^2} = \frac{S(x)}{x} + \frac{e^{-x}}{1+e^{-x}} \frac{x}{1+e^{-x}} = \frac{S(x)}{x} + S(x) \frac{x}{1+e^{-x}} = \\ 
+= \frac{S(x)}{x} + S(x) \frac{S(x)}{x} e^{-x} = \frac{S(x)}{x} \left( 1 + S(x) e^{-x} \right) = \frac{S(x)}{x} \left( 1 + S(x)\frac{x-S(x)}{S(x)} \right) = \\
+= \frac{S(x)}{x} \left( 1 + x - S(x) \right) = \frac{S(x)}{x} + S(x) - \frac{S^2(x)}{x}
+\end{gathered}
+\]
+Let $\sigma = \dfrac{1}{1 + e^{-x}}$, thus 
+\[
+\frac{dS}{dx} = \frac{S(x)}{x} + S(x) - \frac{S^2(x)}{x} = \sigma + S(x) - \sigma S(x) = S(x) + \sigma \left( 1 - S(x) \right)
 \]
