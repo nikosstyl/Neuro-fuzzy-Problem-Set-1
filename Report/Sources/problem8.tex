@@ -6,25 +6,47 @@ It consists of a single neuron with a linear activation function. Each input of 
 \vspace{0.3cm}
 
 Suppose that we have the following three reference patterns and their targets:
+\vspace{5mm}
 
 \[
-\left\{ 
-p1 = \left[
-\begin{array}{c}
-	2 \\
-	4
+\begin{array}{ccc}
+%	\centering
+	\left\{ 
+	p_1 = \left[
+	\begin{array}{c}
+		2 \\
+		4
+	\end{array}
+	\right], t_1 = \left[26\right]
+	\right\} & 
+	\left\{ 
+	p_2 = \left[
+	\begin{array}{c}
+		4 \\
+		2
+	\end{array}
+	\right], t_2 = \left[26\right]
+	\right\}
+	&\left\{ 
+	p_3 = \left[
+	\begin{array}{c}
+		-2 \\
+		-2
+	\end{array}
+	\right], t_3 = \left[-26\right]
+	\right\}
+	
 \end{array}
-\right], t1 = \left[26\right]
-\right\}
 \]
 
-\[
-\left\{ 
-p2 = \left[
-\begin{array}{c}
-	4 \\
-	2
-\end{array}
-\right], t2 = \left[26\right]
-\right\}
-\]
+\vspace{5mm}
+
+The probability of vector p1 is P1 = 0.20, the probability of vector p2 is P2 = 0.70, and the probability of vector p3 is P3 = 0.10.\\
+
+\subsection{Question a}
+The number of inputs to an ADALINE network for any neural network is determined by the dimensionality of our data,not the number of data points (patterns) that we have. In our case, each pattern is a 2-dimensional vector. Therefore, our ADALINE network has two inputs, one for each dimension.\\
+In an ADALINE network, the number of weights is equal to the number of inputs. In our case, each pattern is a 2-dimensional vector. Thus, our neaural network will have two weights, one for each dimension of the input.
+
+
+	
+
