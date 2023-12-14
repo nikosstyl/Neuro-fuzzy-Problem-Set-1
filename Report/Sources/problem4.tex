@@ -70,9 +70,21 @@ Let $\sigma = \dfrac{1}{1 + e^{-x}}$, thus
 
 Activation function is
 \[
-S(x) = x \times \tanh\left( \ln \left( 1 + e^x\right) \right) = \dfrac{x \left( 1+e^x \right) - \dfrac{x}{1+e^x}}{1+e^x + \dfrac{1}{1+e^x}}
+S(x) =  x \MathSpace \tanh\left(\ln\left(1+e^x\right)\right) = x \MathSpace \tanh\left(g(x)\right), \ \text{where} \ g(x) = \ln\left(1+e^x\right).
 \]
-After some calculations, we can observe a relationship to the Swish function:
+
+By calculating the derivative of this function as is, we get 
 \[
-S(x) = \dfrac{x \left( 1+e^x \right) - T(-x)}{1+e^x + \dfrac{1}{1+e^x}} = \dfrac{\dfrac{-x^2}{T(-x)} - T(-x)}{\dfrac{-x}{T(-x)} + \dfrac{T(-x)}{x}} = \frac{-x^3 - T^2(-x)}{-x^2 + T^2(-x)}
+\begin{gathered}
+\frac{dS}{dx} = \tanh(g(x)) + x \ \tanh^{'} (g(x)) \ \frac{dg}{x} = \tanh(g(x)) + x\ \tanh^{'} (g(x)) \ \frac{1}{1+e^{-x}} =\\ 
+= \tanh(g(x)) + \tanh^{'} (g(x)) \ x\ \frac{\text{Swish}(x)}{x} = \frac{S(x)}{x} + \tanh^{'} (g(x)) \ \text{Swish}(x) = \\
+= \frac{S(x)}{x} + (1 - \tanh^{2} (g(x))) \ \text{Swish}(x) = \frac{S(x)}{x} + \text{Swish}(x) - \tanh^{2} (g(x)) \ \text{Swish}(x)
+\end{gathered}
 \]
+So, $\phi(x,S)$ is 
+\begin{equation}
+\begin{gathered}
+\frac{S(x)}{x} + \text{Swish}(x) - \frac{S^2(x)}{x^2} \ \text{Swish}(x), \quad \text{where}\\
+S(x) \text{ is the activation function and Swish}(x) \text{ is the Swish activation function from before}
+\end{gathered}
+\end{equation}
