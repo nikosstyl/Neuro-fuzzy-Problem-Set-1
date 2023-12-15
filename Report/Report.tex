@@ -62,9 +62,13 @@ pdfsubject={ECE447 - Neuro-Fuzzy Computing}]{hyperref}
 	\renewcommand{\footrulewidth}{0.0pt} % Line at the footer visible
 } 
 
-\newcommand{\MathSpace}{\hspace{1mm}}
-\setlength{\parindent}{0pt}
-\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\newcommand{\MathSpace}{\ }
+\setlength{\parindent}{0pt} % Paragraph identation is set to 0
+
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}} % Better fractions for inline
+
+\renewcommand{\thesubsection}{(\alph{subsection})} % Change subsection style
+\renewcommand{\thesection}{\hspace{-18pt}} % Make section style look nicer
 
 \begin{document}
 	
