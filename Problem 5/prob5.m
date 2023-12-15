@@ -3,7 +3,8 @@ function [] = prob5(activation_function, bool_export_plots)
     if nargin == 1
         bool_export_plots = false;
     elseif nargin == 0
-        error('Activation function not defined!')
+        [err_str, ] = sprintf("Usage: prob5(activation_function (logsig | swish), opt:bool_export_plots)\n");
+        error(err_str)
     end
 
     p = linspace(-2, 2, 200);
