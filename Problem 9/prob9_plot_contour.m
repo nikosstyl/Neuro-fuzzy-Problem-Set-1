@@ -13,19 +13,13 @@ function [] = prob9_plot_contour(bool_export_plots)
     p1 = 0.5;
     t1 = [-1];
     z1 = [1;2];
+    
 
     %probability,target value and pattern of input vector p2
     p2 = 0.5;
     t2 = [1];
     z2 = [-2;1];
-
-    %initial weight and learning rate
-    w0 = [3 1];
-    lr = 0.025;
-
-
-    % weights = [w1;w2];
-
+    
     %Step1:Compute c,R,h
 
     %c = E[t^2]
@@ -66,6 +60,6 @@ function [] = prob9_plot_contour(bool_export_plots)
     if bool_export_plots == true
         exportgraphics(gca, "contour_3d.pdf", "ContentType", "vector")
     end
-
+    figure(1);
    
 end
