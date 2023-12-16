@@ -22,7 +22,7 @@ function [] = prob3(skip_cell, bool_export_plots)
     b = 0.4;
 
     % Initialize
-    N_ITER = 1e3;
+    N_ITER = 200;
 
     if skip_init == false
         figure(1);
@@ -50,7 +50,7 @@ function [] = prob3(skip_cell, bool_export_plots)
             exportgraphics(ax1, "prob3_x_init_0.pdf", 'ContentType', 'vector');
             exportgraphics(ax2, "prob3_x_init_1e-5.pdf", 'ContentType', 'vector');
         end
-
+        fprintf('Finished init!\n')
         pause;
     end
 
@@ -70,15 +70,46 @@ function [] = prob3(skip_cell, bool_export_plots)
         end
 
         if bool_export_plots == true
-            pause;
             fprintf('Exporting...\nPlease fix the figure to your desired size and press any key to continue...\n')
-            exportgraphics(f, "prob3_multiple_a_b_0.pdf", 'ContentType', 'vector');
+            pause;
+            exportgraphics(f, "prob3_(a)_multiple_a_b_0.pdf", 'ContentType', 'vector');
         end
+        fprintf('Finished A!\n')
         pause;
     end
 
     if skip_b == false
-        
+        % This question is to test sensitivity to initial conditions
+        x_init = [0 0.1 0.5 0.7 1];
+        b = [0 0.1 0.32];
+
+        ax = zeros(length(x_init), length(b));
+
+        for i = 1:length(x_init)
+            figure;
+            f(i) = tiledlayout(3,1);
+            xlabel(f, "Iteration", "FontName", "Times New Roman");
+            for j = 1:length(b)
+                ax(i,j) = nexttile;
+                set(ax(i,j), "FontName", "Times New Roman");
+                grid(ax(i,j), "on");
+                ylabel(ax(i,j), "Y");
+                title(ax(i,j), sprintf("x_{init}=%0.2f, b=%0.2f", x_init(i), b(j)));
+                hold(ax(i,j), "on");
+                henon_map(a,b(j),x_init(i), N_ITER, ax(i,j));
+                hold(ax(i,j), "off");
+            end
+        end
+
+        if bool_export_plots == true
+            fprintf('Exporting...\nPlease fix the figure to your desired size and press any key to continue...\n')
+            pause;
+            for i = 1:length(x_init)
+                exportgraphics(f(i), sprintf("prob3_(b)_x_init_%0.2f.pdf", x_init(i)), 'ContentType', 'vector');
+            end
+        end
+        fprintf('Finished B!\n')
+        pause;
     end
 end
 
