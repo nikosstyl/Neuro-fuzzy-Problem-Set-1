@@ -1,5 +1,8 @@
 function [] = prob3(skip_cell, bool_export_plots)
 
+    if nargin < 1
+        skip_cell = {};
+    end
     if nargin < 2
        bool_export_plots = false;
     end
@@ -46,12 +49,14 @@ function [] = prob3(skip_cell, bool_export_plots)
         xlabel(ax2, "Iteration");
         ylabel(ax1, "X");
         ylabel(ax2, "X");
-        henon_map(a,b,0, N_ITER, ax1);
-        henon_map(a, b, 0.00001, N_ITER, ax2);
+        x1 = henon_map(a,b,0, N_ITER);
+        x2 = henon_map(a, b, 0.00001, N_ITER);
+        plot (ax1, 1:N_ITER+1, x1);
+        plot (ax2, 1:N_ITER+1, x2);
         hold(ax1, "off");
         hold(ax2, "off");
-        title(ax1, "Henon Map with x_{init}=0");
-        title(ax2, "Henon Map with x_{init}=10^{-5}");
+        title(ax1, "x_{init}=0");
+        title(ax2, "x_{init}=10^{-5}");
         if bool_export_plots == true
             exportgraphics(ax1, "prob3_x_init_0.pdf", 'ContentType', 'vector');
             exportgraphics(ax2, "prob3_x_init_1e-5.pdf", 'ContentType', 'vector');
@@ -73,7 +78,8 @@ function [] = prob3(skip_cell, bool_export_plots)
             grid(ax1, "on");
             title(ax1, sprintf("a=%0.2f", a(i)));
             hold(ax1, "on");
-            henon_map(a(i),b,0, N_ITER, ax1);
+            x = henon_map(a(i),b,0, N_ITER);
+            plot (ax1, 1:N_ITER+1, x);
             hold(ax1, "off");
         end
 
@@ -105,7 +111,8 @@ function [] = prob3(skip_cell, bool_export_plots)
                 ylabel(ax(i,j), "X");
                 title(ax(i,j), sprintf("x_{init}=%0.2f, b=%0.2f", x_init(i), b(j)));
                 hold(ax(i,j), "on");
-                henon_map(a,b(j),x_init(i), N_ITER, ax(i,j));
+                x = henon_map(a,b(j),x_init(i), N_ITER);
+                plot(ax(i,j), 1:N_ITER+1, x);
                 hold(ax(i,j), "off");
             end
         end
@@ -131,7 +138,8 @@ function [] = prob3(skip_cell, bool_export_plots)
         ax = axes;
         set(ax, "FontName", "Times New Roman");
         hold(ax, "on");
-        henon_map(a, b, 0, N_ITER, ax);
+        x = henon_map(a, b, 0, N_ITER);
+        plot(ax, 1:N_ITER+1, x);
         hold(ax, "off");
         grid(ax, "on");
         xlabel(ax, "Iteration");
@@ -159,7 +167,8 @@ function [] = prob3(skip_cell, bool_export_plots)
             xlabel(ax(i), "Iteration");
             ylabel(ax(i), "X");
             title(ax(i), sprintf("a=%0.2f, b=%0.2f", a(i), b(i)));
-            henon_map(a(i), b(i), 0, N_ITER, ax(i));
+            x = henon_map(a(i), b(i), 0, N_ITER);
+            plot(ax(i), 1:N_ITER+1, x);
             hold(ax(i), "off");
         end
 
@@ -168,16 +177,17 @@ function [] = prob3(skip_cell, bool_export_plots)
                 exportgraphics(f(i), sprintf("prob3_(d)_a_%0.2f_b_%0.2f.pdf", a(i), b(i)), 'ContentType', 'vector');
             end
         end
+        fprintf('Finished D!\n')
     end
 end
 
 
-function [x] = henon_map (a,b,x_init, iters, ax)
+function [x] = henon_map (a,b,x_init, iters)
     x = zeros(iters, 1);
     x(1,1) = x_init;
 
     for i = 2:iters
         x(i+1,1) = 1 - a*x(i,1)^2 + b*x(i-1,1);
-        plot(ax, i, x(i,1), '*', 'Color', [0.00,0.45,0.74]);
+        % plot(ax, i, x(i,1), '_', 'Color', [0.00,0.45,0.74]);
     end
 end
