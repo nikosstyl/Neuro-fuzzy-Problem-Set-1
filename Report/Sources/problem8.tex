@@ -84,7 +84,7 @@ The calculations:
 \]
 \[
 \begin{gathered}
-h = E[t \cdot p] = P_1 \cdot t_1 \cdot p_1 + P_2 \cdot t_2 \cdot p_2 + P_3 \cdot t_3 \cdot p_3 = 0.2 \cdot 26 \cdot \left[
+h = E[t \cdot p] = P_1 \cdot t_1 \cdot p_1 + P_2 \cdot t_2 \cdot p_2 + P_3 \cdot t_3 \cdot p_3 = \\ 0.2 \cdot 26 \cdot \left[
 \begin{array}{cc}  
 	2 \\  
 	4 \\
@@ -148,19 +148,55 @@ h = E[t \cdot p] = P_1 \cdot t_1 \cdot p_1 + P_2 \cdot t_2 \cdot p_2 + P_3 \cdot
 	\right]	
 \end{gathered}
 \]
-So,in conclusion the Mean Square Error (MSE) performance index is:
+\vspace{2mm}
+In conclusion the Mean Square Error (MSE) performance index is:
 \[
-F(x) = 676 - 2 \cdot \left[ \begin{array}{cc}
-	W_11 & W_12
+F(x) = 676 - 2 \cdot \left[\begin{array}{cc}
+	W_{11} & W_{12}
 \end{array}
-right] \cdot \left[\begin{array}{c}
+\right] \cdot \left[\begin{array}{c}
 	88.4 \\
 	62.4
 \end{array}
-\right] +
+\right] + \left[\begin{array}{cc}
+	W_{11} & W_{12}
+\end{array}
+\right] \cdot \left[
+\begin{array}{cc}
+	12.4 & 7.6 \\
+	7.6 & 6.4
+\end{array}
+\right]	\cdot \left[\begin{array}{c}
+	W_{11} \\
+	W_{12}
+\end{array}
+\right] \rightarrow
 \]
 
+\[
+F(x) = 676 -176.8 \cdot W_{11} - 124.8 \cdot W_{12} + 12.4 \cdot W_{11}^2 + 15.2 \cdot W_{11}\cdot W_{12} + 6.4 \cdot W_{12}^2
+\]
+\\
+By inserting this function into Matlab we get the 2D and 3D contour plots of the MSE index
+as shown in figures \ref{fig:prob_8_2d} and \ref{fig:prob_8_3d}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.47\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 8/contour_2d.pdf}
+		\caption{2D plot of MSE index}
+		\label{fig:prob_8_2d}
+	\end{subfigure}
+	\hspace{2mm}
+	\begin{subfigure}{0.47\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 8/contour_3d.pdf}
+		\caption{3D plot of MSE index}
+		\label{fig:prob_8_3d}
+	\end{subfigure}	
+\end{figure}
 
+\subsection{Question C}
 
 
 	
