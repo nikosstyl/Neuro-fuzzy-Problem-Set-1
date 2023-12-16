@@ -41,11 +41,115 @@ Suppose that we have the following three reference patterns and their targets:
 
 \vspace{5mm}
 
-The probability of vector p1 is P1 = 0.20, the probability of vector p2 is P2 = 0.70, and the probability of vector p3 is P3 = 0.10.\\
+The probability of vector p1 is $P_{1}= 0.20$, the probability of vector p2 is $P_{2}= 0.70$, and the probability of vector p3 is $P_{3}= 0.10$.
+
 
 \subsection{Question a}
-The number of inputs to an ADALINE network for any neural network is determined by the dimensionality of our data,not the number of patterns that we have. In our case, each pattern is a 2-dimensional vector. Therefore, our ADALINE network has two inputs, one for each dimension.\\
-In an ADALINE network, the number of weights is equal to the number of inputs. In our case, each pattern is a 2-dimensional vector. Thus, our neaural network will have two weights, one for each dimension of the input.
+The number of inputs to an ADALINE network for each neural network is determined by the dimensionality of our data,not by the number of patterns we have. In our case, each pattern is a 2-dimensional vector. Therefore, our ADALINE network has two inputs, one for each dimension.\\
+In an ADALINE network, the number of weights is equal to the number of inputs. In our case, we have two inputs. Thus, our neural network has two weights, one for each dimension of the input.\\
+From theory, the output of an ADALINE network is a = purelin($W_{p}$+b).\\
+
+So, the network diagram for the given ADALINE network with no bias that will be trained with  these patterns is shown in figure \ref{fig:prob8_adaline_draw}.
+
+\begin{figure}[htpb]
+	\centering
+	\includesvg[width=0.7\textwidth]{../Problem 8/problem8.svg}
+	\caption{ADALINE neural network architecture}
+	\label{fig:prob8_adaline_draw}
+\end{figure}
+
+\subsection{Question b}
+In order to sketch the contour plot of the mean square error performance index, we first must calculate the various terms of the quadratic function.\\
+Recall that, $ F(x) = c-2 \cdot x^T \cdot h + x^T \cdot R \cdot x $ where,
+\begin{itemize}
+	\item c: A scalar constant term. It shifts the function up or down along the y-axis.
+	\item R: Correlation matrix of the input data. It determines the curvature of the function
+	\item h: The cross-correlation between the input data and the desired output.  It determines the slope of the function.
+	\item x: The vector of variables (or weights).
+\end{itemize}
+These parameters define the shape of the quadratic function. So,we must calculate c,h,R in relation to 
+ \[x = \left[
+\begin{array}{cc}  
+  	W_{11} & W_{12} \\  
+\end{array}
+\right]
+\]
+
+The calculations:
+\[ 
+\begin{gathered}
+	c = E[t^2] = t_1^2 \cdot p_1 + t_2^2 \cdot p_2 + t_3^2 \cdot p_3 = 26^2 \cdot 0.2 + 26^2 \cdot 0.7 + (-26)^2 \cdot 0.1\\
+	\rightarrow c = 676
+\end{gathered}
+\]
+\[
+\begin{gathered}
+h = E[t \cdot p] = P_1 \cdot t_1 \cdot p_1 + P_2 \cdot t_2 \cdot p_2 + P_3 \cdot t_3 \cdot p_3 = 0.2 \cdot 26 \cdot \left[
+\begin{array}{cc}  
+	2 \\  
+	4 \\
+\end{array}
+\right] + 0.7 \cdot 26 \cdot \left[ \begin{array}{cc}  
+	4 \\  
+	2 \\
+\end{array}
+\right] + 0.1 \cdot (-26) \cdot \left[ \begin{array}{cc}  
+	-2 \\  
+	-2 \\
+\end{array}
+\right] \\
+\rightarrow h = \left[
+	\begin{array}{c}  
+		88.4 \\  
+		62.4 \\
+	\end{array}
+	\right]
+\end{gathered}
+\]
+\\
+\[
+\begin{gathered}
+	R = E[p \cdot p^T] = P_1 \cdot p_1 \cdot p_1^T + P_2 \cdot p_2 \cdot p_2^T + P_3 \cdot p_3 \cdot p_3^T \\ = 0.2 \cdot \left[
+	\begin{array}{c}  
+		2 \\  
+		4 \\
+	\end{array}
+	\right] \cdot \left[
+	\begin{array}{c}  
+		2 \\  
+		4 \\
+	\end{array}
+	\right]^T +  0.7 \cdot \left[
+	\begin{array}{c}  
+		4 \\  
+		2 \\
+	\end{array}
+	\right] \cdot \left[
+	\begin{array}{c}  
+		4 \\  
+		2 \\
+	\end{array}
+	\right]^T +  0.1 \cdot \left[
+	\begin{array}{c}  
+		-2 \\  
+		-2 \\
+	\end{array}
+	\right] \cdot \left[
+	\begin{array}{c}  
+		-2 \\  
+		-2 \\
+	\end{array}
+	\right]^T \\
+	\rightarrow R = \left[
+	\begin{array}{cc}
+		12.4 & 7.6 \\
+		7.6 & 6.4
+	\end{array}
+	\right]	
+\end{gathered}
+\]
+
+
 
 
 	
