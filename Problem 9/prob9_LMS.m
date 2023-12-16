@@ -36,7 +36,9 @@ end
 
 % Create the contour plot using your function F
 figure;
-prob9_plot_contour(true); 
+bool_export_plots = true;
+prob9_plot_contour(bool_export_plots); 
+figure(1);
 hold on;
 
 % Overlay the trajectory of the weights
@@ -46,3 +48,7 @@ xlabel('w1');
 ylabel('w2');
 title('Trajectory of the LMS algorithm');
 hold off;
+figure(1);
+if bool_export_plots == true
+        exportgraphics(gca, "contour_2d_traj.pdf", "ContentType", "vector")
+end

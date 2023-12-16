@@ -4,7 +4,7 @@ function [] = prob9_plot_contour(bool_export_plots)
         bool_export_plots = false;
     end
 
-    x = linspace(-20, 30);
+    x = linspace(-10, 15);
     y=x;
 
     [X,Y] = meshgrid(x,y);
