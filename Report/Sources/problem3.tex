@@ -45,3 +45,35 @@ After $a$ surpasses $1$, the oscillation starts to break down, as shown in the l
 
 \subsection{Multiple initial x values}
 
+Figure~\ref{fig:prob3_multiple_x_multiple_b} shows the trajectory of sequences with different $x_{init}$ and $b$, with $a = c, \ \text{where} \ c = 0.3$ from previous question.
+Inspecting this figure, we can understand some things about those parameters and what they affect on the system, as even with $b=0$, the system performs a damped oscillation for the first 50 (at most) $x_i$.
+For a given $x_{init}$ (ie. $0$), increasing $b$ increases the amplitude of oscillation as well as the overshoot percentage (if we see it as an system response).
+
+\textit{PS: Overshoot \% is the percentage of system's maximum value that surpasses its steady-state value over the latter.}
+
+
+\begin{figure}[htpb]
+	\centering
+	\begin{subfigure}{0.47\textwidth}
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(b)_x_init_0.00.pdf}
+		\caption{}
+	\end{subfigure}
+	\begin{subfigure}{0.47\textwidth}
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(b)_x_init_0.10.pdf}
+		\caption{}
+	\end{subfigure}\\[4mm]
+	\begin{subfigure}{0.47\textwidth}
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(b)_x_init_0.50.pdf}
+		\caption{}
+	\end{subfigure}
+	\begin{subfigure}{0.47\textwidth}
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(b)_x_init_0.70.pdf}
+		\caption{}
+	\end{subfigure}\\[4mm]
+	\begin{subfigure}{0.47\textwidth}
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(b)_x_init_1.00.pdf}
+		\caption{}
+	\end{subfigure}
+	\caption{}
+	\label{fig:prob3_multiple_x_multiple_b}
+\end{figure}
