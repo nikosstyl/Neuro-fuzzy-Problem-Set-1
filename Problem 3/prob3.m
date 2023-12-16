@@ -7,6 +7,8 @@ function [] = prob3(skip_cell, bool_export_plots)
     skip_init = false;
     skip_a = false;
     skip_b = false;
+    skip_c = false;
+    skip_d = false;
 
     for i = 1:length(skip_cell)
         if strcmpi(skip_cell{i}, "init") == 1
@@ -14,7 +16,11 @@ function [] = prob3(skip_cell, bool_export_plots)
         elseif strcmpi(skip_cell{i}, "a") == 1
             skip_a = true;
         elseif strcmpi(skip_cell{i}, "b") == 1
-            skip_b = true;            
+            skip_b = true;
+        elseif strcmpi(skip_cell{i}, "c") == 1
+            skip_c = true;
+        elseif strcmpi(skip_cell{i}, "d") == 1
+            skip_d = true;           
         end
     end
 
@@ -36,10 +42,10 @@ function [] = prob3(skip_cell, bool_export_plots)
         set(ax2, "FontName", "Times New Roman");
         grid(ax1, "on");
         grid(ax2, "on"); 
-        xlabel(ax1, "X");
-        xlabel(ax2, "X");
-        ylabel(ax1, "Y");
-        ylabel(ax2, "Y");
+        xlabel(ax1, "Iteration");
+        xlabel(ax2, "Iteration");
+        ylabel(ax1, "X");
+        ylabel(ax2, "X");
         henon_map(a,b,0, N_ITER, ax1);
         henon_map(a, b, 0.00001, N_ITER, ax2);
         hold(ax1, "off");
@@ -59,6 +65,8 @@ function [] = prob3(skip_cell, bool_export_plots)
         a = linspace(0, 1.4, a_size);
         b=0;
         f = tiledlayout(4,2);
+        xlabel(f, "Iteration", "FontName", "Times New Roman");
+        ylabel(f, "X", "FontName", "Times New Roman");
         for i = 1:a_size % 2:N_ITER
             ax1 = nexttile;
             set(ax1, "FontName", "Times New Roman");
@@ -80,6 +88,7 @@ function [] = prob3(skip_cell, bool_export_plots)
 
     if skip_b == false
         % This question is to test sensitivity to initial conditions
+        a = 0.3;
         x_init = [0 0.1 0.5 0.7 1];
         b = [0 0.1 0.32];
 
@@ -93,7 +102,7 @@ function [] = prob3(skip_cell, bool_export_plots)
                 ax(i,j) = nexttile;
                 set(ax(i,j), "FontName", "Times New Roman");
                 grid(ax(i,j), "on");
-                ylabel(ax(i,j), "Y");
+                ylabel(ax(i,j), "X");
                 title(ax(i,j), sprintf("x_{init}=%0.2f, b=%0.2f", x_init(i), b(j)));
                 hold(ax(i,j), "on");
                 henon_map(a,b(j),x_init(i), N_ITER, ax(i,j));
@@ -110,6 +119,55 @@ function [] = prob3(skip_cell, bool_export_plots)
         end
         fprintf('Finished B!\n')
         pause;
+    end
+
+    if skip_c == false
+        a = 0.365;
+        b = 0.3;
+
+        N_ITER = 1.5e3;
+
+        figure;
+        ax = axes;
+        set(ax, "FontName", "Times New Roman");
+        hold(ax, "on");
+        henon_map(a, b, 0, N_ITER, ax);
+        hold(ax, "off");
+        grid(ax, "on");
+        xlabel(ax, "Iteration");
+        ylabel(ax, "X");
+
+        if bool_export_plots == true
+            exportgraphics(ax, "prob3_(c)_a_0.365_b_0.3.pdf", 'ContentType', 'vector');
+        end
+
+        fprintf('Finished C!\n')
+        pause;
+    end
+
+    if skip_d == false
+        a = [0.2 0.5 0.9];
+        b = [0.4 0.4 0.4];
+        ax = zeros(length(a), 1);
+
+        for i = 1:length(a)
+            f(i) = figure;
+            ax(i) = axes;
+            set(ax(i), "FontName", "Times New Roman");
+            hold(ax(i), "on");
+            grid(ax(i), "on");
+            xlabel(ax(i), "Iteration");
+            ylabel(ax(i), "X");
+            title(ax(i), sprintf("a=%0.2f, b=%0.2f", a(i), b(i)));
+            henon_map(a(i), b(i), 0, N_ITER, ax(i));
+            hold(ax(i), "off");
+        end
+
+        if bool_export_plots == true
+            for i = 1:length(a)
+                exportgraphics(f(i), sprintf("prob3_(d)_a_%0.2f_b_%0.2f.pdf", a(i), b(i)), 'ContentType', 'vector');
+            end
+        end
     end
 end
 
