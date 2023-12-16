@@ -64,7 +64,7 @@ Recall that, $ F(x) = c-2 \cdot x^T \cdot h + x^T \cdot R \cdot x $ where,
 \begin{itemize}
 	\item c: A scalar constant term. It shifts the function up or down along the y-axis.
 	\item R: Correlation matrix of the input data. It determines the curvature of the function
-	\item h: The cross-correlation between the input data and the desired output.  It determines the slope of the function.
+	\item h: The cross-correlation between the input data and its associated target.  It determines the slope of the function.
 	\item x: The vector of variables (or weights).
 \end{itemize}
 These parameters define the shape of the quadratic function. So,we must calculate c,h,R in relation to 
@@ -196,7 +196,43 @@ as shown in figures \ref{fig:prob_8_2d} and \ref{fig:prob_8_3d}
 	\end{subfigure}	
 \end{figure}
 
-\subsection{Question C}
+\subsection{Question c}
+A decision boundary is a hypersurface that separates different classes in a classification problem.\\
+For a binary classification problem,as in our case, all points on one side of the decision boundary are predicted to belong to one class, while points on the other side are predicted to belong to the other class.\\
+The optimal decision boundary is the one that minimizes a certain transfer function. Here it is a line that can be described by the equation 
+\[
+\begin{gathered}
+	f(x) = W^T \cdot x^*, 
+\end{gathered}
+\]
+where $
+W=\left[\begin{array}{cc}
+	W_{11} & W_{12}
+\end{array}
+\right]
+$ and $x^*$ the minimum square error \\
+$x^*$ is the strong minimum, a stationary point that is indeed the center of the cycle of Figure \ref{fig:prob_8_2d}.\\
+
+So, in order to find the optimal decision boundary we follow the mentioned steps:
+\begin{itemize}
+	\item $f(x) = W^T \cdot x^*$
+	\item Set f(x) = 0
+	\item Calculate $x^* = R^-1 \cdot h$
+	\item Replace the value in f(x)
+\end{itemize}
+
+By calculating $x^* = R^-1 \cdot h$ we get that $x^* = \left[\begin{array}{c}
+															4.2370 \\
+															4.7185 \\
+														\end{array}
+														\right] $
+
+\vspace{5mm}
+and the optimal decision boundary is $f(W_{11},W_{12}) = 4.2370 \cdot W_{11} + 4.7185 \cdot W_{12} $ \\
+With the help of Matlab we get the following figure \
+
+
+
 
 
 	
