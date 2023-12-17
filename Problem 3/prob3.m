@@ -132,7 +132,8 @@ function [] = prob3(skip_cell, bool_export_plots)
         a = 0.365;
         b = 0.3;
 
-        N_ITER = 1.5e3;
+        % N_ITER = 1.5e3;
+        N_ITER = 2e2;
 
         figure;
         ax = axes;
@@ -154,6 +155,7 @@ function [] = prob3(skip_cell, bool_export_plots)
     end
 
     if skip_d == false
+        N_ITER = 2e2;
         a = [0.2 0.5 0.9];
         b = [0.4 0.4 0.4];
         ax = zeros(length(a), 1);

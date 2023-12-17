@@ -49,7 +49,7 @@ Figure~\ref{fig:prob3_multiple_x_multiple_b} shows the trajectory of sequences w
 Inspecting this figure, we can understand some things about those parameters and what they affect on the system, as even with $b=0$, the system performs a damped oscillation for the first 50 (at most) $x_i$.
 For a given $x_{init}$ (ie. $0$), increasing $b$ increases the amplitude of oscillation as well as the overshoot percentage (if we see it as an system response).
 
-\textit{PS: Overshoot \% is the percentage of system's maximum value that surpasses its steady-state value over the latter.}
+\textit{\footnotesize PS: Overshoot \% is the percentage of system's maximum value that surpasses its steady-state value over the latter.}
 
 
 \begin{figure}[htpb]
@@ -76,4 +76,48 @@ For a given $x_{init}$ (ie. $0$), increasing $b$ increases the amplitude of osci
 	\end{subfigure}
 	\caption{}
 	\label{fig:prob3_multiple_x_multiple_b}
+\end{figure}
+
+\subsection{(a,b) = (0.3675, 0.3)}
+
+By setting these values to the system, we observe that the sequence starts to oscillate with a very high frequency. As the sequence progresses, the observed oscillation's amplitude dampens and settles around a fixed number, whilst still oscillating.
+
+\begin{figure}[htpb]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(c)_a_0.365_b_0.3.pdf}
+		\caption{Normal trajectory}
+	\end{subfigure}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(c)_a_0.365_b_0.3_zoomed.pdf}
+		\caption{Zoomed in}
+	\end{subfigure}
+	\caption{Sequence's trajectory with (0.3675, 0.3)}
+\end{figure}
+
+\subsection{Multiple a values}
+
+In this question, we want to see the consequences of changing parameter $a$. Observing figure~\ref{fig:prob3_d_multiple_a}, we understand that increasing the parameter's value increases the oscillation's frequency
+
+\begin{figure}[htbp]
+	\centering
+	\begin{subfigure}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(d)_a_0.20_b_0.40.pdf}
+		\caption{}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(d)_a_0.50_b_0.40.pdf}
+		\caption{}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 3/prob3_(d)_a_0.90_b_0.40.pdf}
+		\caption{}
+	\end{subfigure}
+	\caption{}
+	\label{fig:prob3_d_multiple_a}
 \end{figure}
