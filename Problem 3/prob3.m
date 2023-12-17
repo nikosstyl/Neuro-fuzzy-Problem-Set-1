@@ -156,8 +156,8 @@ function [] = prob3(skip_cell, bool_export_plots)
 
     if skip_d == false
         N_ITER = 2e2;
-        a = [0.2 0.5 0.9];
-        b = [0.4 0.4 0.4];
+        a = [0.2 0.4 0.5 0.9];
+        b = [0.4 0.4 0.4 0.4];
         ax = zeros(length(a), 1);
 
         for i = 1:length(a)
