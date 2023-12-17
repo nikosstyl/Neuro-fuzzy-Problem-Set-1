@@ -49,15 +49,16 @@ The number of inputs to an ADALINE network for each neural network is determined
 In an ADALINE network, the number of weights is equal to the number of inputs. In our case, we have two inputs. Thus, our neural network has two weights, one for each dimension of the input.\\
 From theory, the output of an ADALINE network is a = purelin($W_{p}$+b).\\
 
-So, the network diagram for the given ADALINE network with no bias that will be trained with  these patterns is shown in figure \ref{fig:prob8_adaline_draw}.
+So, the network diagram for the given ADALINE network with no bias that will be trained with  these patterns is shown in figure \ref{fig:prob8_adaline_draw}.\\
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 	\centering
 	\includesvg[width=0.7\textwidth]{../Problem 8/problem8.svg}
 	\caption{ADALINE neural network architecture}
 	\label{fig:prob8_adaline_draw}
 \end{figure}
 
+\vspace{2cm}
 \subsection{Question b}
 In order to sketch the contour plot of the mean square error performance index, we first must calculate the various terms of the quadratic function.\\
 Recall that, $ F(x) = c-2 \cdot x^T \cdot h + x^T \cdot R \cdot x $ where,
@@ -148,7 +149,8 @@ h = E[t \cdot p] = P_1 \cdot t_1 \cdot p_1 + P_2 \cdot t_2 \cdot p_2 + P_3 \cdot
 	\right]	
 \end{gathered}
 \]
-\vspace{2mm}
+
+\vspace{4mm}
 In conclusion the Mean Square Error (MSE) performance index is:
 \[
 F(x) = 676 - 2 \cdot \left[\begin{array}{cc}
@@ -175,10 +177,11 @@ F(x) = 676 - 2 \cdot \left[\begin{array}{cc}
 
 \[
 F(x) = 676 -176.8 \cdot W_{11} - 124.8 \cdot W_{12} + 12.4 \cdot W_{11}^2 + 15.2 \cdot W_{11}\cdot W_{12} + 6.4 \cdot W_{12}^2
-\]
-\\
+\]\\
+
+
 By inserting this function into Matlab we get the 2D and 3D contour plots of the MSE index
-as shown in figures \ref{fig:prob_8_2d} and \ref{fig:prob_8_3d}
+as shown in figures \ref{fig:prob_8_2d} and \ref{fig:prob_8_3d}\\
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}{0.47\textwidth}
@@ -196,9 +199,9 @@ as shown in figures \ref{fig:prob_8_2d} and \ref{fig:prob_8_3d}
 	\end{subfigure}	
 \end{figure}
 
+\vspace{2cm}
 \subsection{Question c}
 A decision boundary is a hypersurface that separates different classes in a classification problem.\\
-For a binary classification problem,as in our case, all points on one side of the decision boundary are predicted to belong to one class, while points on the other side are predicted to belong to the other class.\\
 The optimal decision boundary is the one that minimizes a certain transfer function. Here it is a line that can be described by the equation 
 \[
 \begin{gathered}
@@ -238,6 +241,94 @@ With the help of Matlab we get the following figure \ref{fig:patterns}
 	\caption{Optimal Decision Boundary line and the patterns}
 	\label{fig:patterns}
 \end{figure}
+
+From the figure \ref{fig:patterns} it is obvious that the optimal decision boundary separates and correctly classifies the patterns. For a binary classification problem,as in our case, all points(\color{red}{*}\color{black}) on one side of the decision boundary are predicted to belong to one class, while points (\color{blue}{x}\color{black}) on the other side are predicted to belong to the other class.\\
+
+\subsection{Question d}
+The maximum stable learning rate for the LMS algorithm can be calculated by
+$lr_{max} = \dfrac{1}{\lambda_{max}}$ , where ${\lambda_{max}}$ is the largest eigenvalue of the correlation matrix R. With the help of matlab i calculated and found that the eigenvalue matrix of R is 
+
+ \[
+ eigenvalue = \left[
+\begin{array}{c}  
+	1.2293 \\
+	17.5707  
+\end{array}
+\right]
+\]
+Thus the largest eigenvalue is ${\lambda_{max}} = 17.5707$ and in conclusion the maximum learning rate is $lr_{max} = \dfrac{1}{17.5707}$ $\rightarrow$ \fbox{$lr_{max} = 0.0569$}
+\\
+
+As we have already mentioned, the learning rate is related to the correlation matrix R. The matrix R depends only on the properties of the input data -$R = E[p \cdot p^T]$ - and not on the output. The learning rate does not depend on the target values but on the properties of the input data.\\
+This means that, changing the target values could potentially affect the convergence of the LMS algorithm and the final solution.However, the maximum stable learning rate itself, as a parameter of the algorithm, would not be directly affected by changes in the target values.\\
+
+\vspace{2mm}
+
+\subsection{Question e}
+To perform one iteration of the LMS algorithm we will need a learning rate, the initial weight values and an input. It is given that
+\begin{itemize}
+	\item Input data: pattern $p_1 = \left[
+	\begin{array}{c}
+		2 \\
+		4
+	\end{array}
+	\right]
+	$
+	\item $w(0) = \left[
+	\begin{array}{c}
+		0 \\
+		0
+	\end{array}
+	\right]
+	$
+	\item Learning rate: lr = 0.05
+\end{itemize}
+For a single-layer ADALINE network we recall the rule
+\begin{center}
+	$W_{k+1} = W_k + 2 \cdot lr \cdot e_k \cdot p_k^T$
+\end{center}
+where $e_k$ is the error on that step.\\
+
+To begin with, we must follow these steps for the iterations. For k=0 we get:
+\begin{itemize}
+	\item Step1: Find output $a_k$\\
+	$a_0 = purelin(W(0) \cdot p_1) = purelin(w(0) = \left[
+	\begin{array}{c}
+		0 \\
+		0
+	\end{array}
+	\right] \cdot \left[\begin{array}{c}
+		2 \\
+		4
+	\end{array}
+	\right] = 0 $
+	\item Step2: Calculate error $e_k$\\
+	$e_0 = t_0 - a_0 = t_1 - a_0 = 26 - 0 = 26$
+	\item Step3: Calculate weight $W_{k+1}$\\
+	$W_{1} = W_0 + 2 \cdot lr \cdot e_0 \cdot p_0^T = w(0) = \left[
+	\begin{array}{c}
+		0 \\
+		0
+	\end{array}
+	\right] + 2 \cdot 0.05 \cdot e_0 \cdot  \left[
+	\begin{array}{c}
+		2 \\
+		4
+	\end{array}
+	\right] =  \left[
+	\begin{array}{c}
+		2 \\
+		4
+	\end{array}
+	\right] =  \left[
+	\begin{array}{cc}
+		5.2000 & 10.4000 \\
+	\end{array}
+	\right]$
+	
+\end{itemize}
+
+
 
 
 
