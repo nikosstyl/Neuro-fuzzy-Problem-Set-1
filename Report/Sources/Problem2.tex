@@ -12,4 +12,169 @@ The steps that we must use each time are specific.
 \begin{center}
 	\textit{FIRST ITERATION k = 0}
 \end{center}
-\underline{Step1: Calculate the Gradient}
+
+\underline{Step1: Calculate the Gradient}\\
+
+\(\nabla f(x_1,x_2) = \left(\begin{array}{c}
+	\frac{\partial f}{\partial x_1} \\[1mm]
+	\frac{\partial f}{\partial x_2}
+\end{array}\right)\) = $\left(\begin{array}{c}
+ 2 \cdot (x_1 + 2 \cdot x_2 - 7) + 4 \cdot (2 \cdot x_1 + x_2 -5)\\[1mm]
+4 \cdot (x_1 + 2 \cdot x_2 -7) + 2 \cdot (2 \cdot x_1 + x_2 - 5)
+\end{array}\right) = \left(\begin{array}{c}
+10 \cdot x_1 + 8 \cdot x_2 - 34\\[1mm]
+8 \cdot x_1 + 10 \cdot x_2 -38
+\end{array}\right)$ \\[3mm]
+
+where at the point $x_0 = (-9.5,9.5)$ we have $(\nabla f(x) = \left(\begin{array}{c}
+	-53 \\
+	-19
+\end{array}\right)$
+\\[4mm]
+
+\underline{Step2: Calculate the norm \(\|f\|\).}\\
+
+\(\|\nabla f(x_1,x_2)\| = \sqrt{\left(\frac{\partial f}{\partial x_1}\right)^2 + \left(\frac{\partial f}{\partial x_2}\right)^2} = \sqrt{\left(10 \cdot x_1 + 8 \cdot x_2 - 34\right)^2 + \left(8 \cdot x_1 + 10 \cdot x_2 -38\right)^2}\) \\[2mm]
+
+we want the \(\|f(x_1,x_2)\|\) at the point $x_0 = (-9.5,9.5)$. so by substituting we have \(\|f(x_1,x_2)\| = 56.3028\).
+\\[7mm]
+\underline{Step3: Find the direction of descending at $x_0 = (-9.5,9.5)$}\\
+
+$S_0 = -\dfrac{\nabla f(x_1,x_2)}{\|f\|} = -\dfrac{1}{56.3028} \cdot \left(\begin{array}{c}
+	-53 \\
+	-19
+\end{array}\right)$ $\rightarrow S_0 = \left(\begin{array}{c}
+0.9413 \\
+0.3375
+\end{array}\right)$
+\\[7mm]
+\underline{Step4: Find next step and optimal $\lambda$}\\[2mm]
+Each step is characterized by $x_{k+1} = x_k + \lambda_k \cdot S_k$
+\begin{equation}
+	x_1 = x_0^T + \lambda_0 \cdot S_0 = \left(\begin{array}{c}
+		-9.5 \\
+		9.5
+	\end{array}\right) + \lambda_0 \cdot  \left(\begin{array}{c}
+		0.9413 \\
+		0.3375
+	\end{array}\right) \\
+	 \rightarrow x_1 = \left(-9.5+0.9413 \cdot \lambda_0, 9.5+0.3375 \cdot \lambda_0\right)
+	 \label{eq}
+\end{equation}
+\\[0.5mm]
+Now we replace to the $f(x_1,x_2)$ function the $x_1$ from (\ref{eq}).
+\begin{equation}
+	\centering
+	\begin{gathered}
+		f(x_1) = \left(-9.5+0.9413\cdot\lambda_0+12+2 \cdot \lambda_0 \cdot 0.3375 \right)^2+\left(9.5+2 \cdot \lambda_0 \cdot 0.9413+0.3375 \cdot \lambda_0-24\right)^2
+	\end{gathered}
+\end{equation}
+\label{eq4}
+
+In order to find the optimal $\lambda$ we must follow some more steps.\\
+We should set the derivative of $f(x_1)$ relative to $\lambda_0$ equal to zero.\\
+
+\[
+\begin{gathered}
+	\dfrac{\partial f(x_1)}{\partial \lambda_0} = 2 \cdot (-9.5+0.9413 \cdot \lambda_0+12+2 \cdot \lambda_0\cdot 0.3375) \cdot (0.9413+2 \cdot 2 \cdot 0.3375)\\
+	 +2 \cdot(9.5+2 \cdot \lambda_0 \cdot 0.9413+0.3375 \cdot \lambda_0 -24) \cdot (2 \cdot 0.9413+0.3375)\\
+	 = 2 \cdot [1.6163\cdot(1.6163 \cdot \lambda_0+2.5)+2.2201\cdot(2.2201\cdot\lambda_0-14.5)]\\
+	 \rightarrow \dfrac{\partial f(x_1)}{\partial \lambda_0} = 7.5412 \cdot \lambda_0-28.1506
+\end{gathered}
+\]
+
+We set $\dfrac{\partial f(x_1)}{\partial \lambda_0} = 0$ so,\\
+
+$7.5412 \cdot \lambda_0-28.1506 = 0 \rightarrow \fbox{{\(\lambda_0 = 3.7329\)}}$ \\
+
+and from equation \ref{eq},by replacing the $\lambda_0$, we get $x_1 = (-5.9862,10.7599)$
+\\[2mm]
+\begin{center}
+	\textit{SECOND ITERATION k = 1}
+\end{center} 
+We will follow all 4 steps again to complete the second iteration for $x_1 = (-5.9862,10.7599)$.\\
+
+\underline{Step1- Gradient at $x_1$:}
+$\nabla f(x_1) = \left(\begin{array}{c}
+	-7.7828\\
+	21.7094
+\end{array}\right)$\\
+
+\underline{Step2- Norm at $x_1$:}
+$(\|\nabla f(x_1)\|) = 23.0623$\\
+
+\underline{Step3- Direction of descending at $x_1$:}
+ $S_1 = -\dfrac{\nabla f(x_1)}{\|f(x_1)\|} = -\dfrac{1}{23.0623} \cdot \left(\begin{array}{c}
+	-7.7828\\
+	21.7094
+\end{array}\right)$ $\rightarrow S_1 = \left(\begin{array}{c}
+	0.3375 \\
+	-0.9413
+\end{array}\right)$\\
+
+\underline{Step4- Find next step and optimal $\lambda$}\\[2mm]
+\begin{equation}
+	\begin{gathered}
+	x_2 = x_1^T + \lambda_1 \cdot S_1 = \left(\begin{array}{c}
+	    -5.9862 \\
+		10.7599
+	\end{array}\right) + \lambda_1 \cdot  \left(\begin{array}{c}
+		0.3375 \\
+		-0.9413
+	\end{array}\right) \\[1mm]
+	\rightarrow x_2 = \left(-5.9862+0.3375 \cdot \lambda_1, 10.7599-0.9413 \cdot \lambda_1\right)		
+\end{gathered}
+\label{eq5}
+\end{equation}
+\\[0.5mm]
+
+Again we replace to the $f(x_1,x_2)$ function the $x_2$ from (\ref{eq5}).
+\begin{equation}
+	\centering
+	\begin{gathered}
+		f(x_2) = \left(8.5336+0.3375 \cdot \lambda_1-2 \cdot \lambda_1 \cdot 0.9413 \right)^2+\left(-0.9413 \cdot \lambda_1+2 \cdot \lambda_1 \cdot 0.3375-6.2125\right)^2
+	\end{gathered}
+\end{equation}
+\label{eq6}
+
+Subsequently, we will find the derivative of $f(x_2)$\\
+\[
+\begin{gathered}
+	\frac{\partial f(x_2)}{\partial \lambda_1} = 2\cdot[(8.5336+0.3375 \cdot \lambda_1-2 \cdot \lambda_1 \cdot 0.9413) \cdot (-1.5451)
+	+ \\ \cdot(-0.9413 \cdot \lambda_1+2 \cdot \lambda_1 \cdot 0.3375-6.2125) \cdot (-0.2663)]\\
+	= 2 \cdot [-1.5451 \cdot (-1.5451 \cdot \lambda_1+8.5336)+(-0.2663)\cdot(-0.2663\cdot\lambda_1-6.2125)] \\[2mm]
+	\rightarrow \frac{\partial f(x_2)}{\partial \lambda_1} = 2\cdot[2.4582 \cdot \lambda_1-11.5309]
+\end{gathered}
+\]\\
+
+We set $\dfrac{\partial f(x_2)}{\partial \lambda_1} = 0$ so,\\
+
+$2\cdot[2.4582 \cdot \lambda_1-11.5309] = 0 \rightarrow \fbox{{\(\lambda_1 = 4.6908\)}}$ \\
+
+and from equation \ref{eq5},by replacing the $\lambda_1$, we get $x_2 = (-4.4031,6.3444)$.
+\\[4mm]
+The results of the execution of the two iterations are shown in the following table.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		%\centering
+		\textbf{\# of iterations} & $\mathbf{x_k+1}$ & $\mathbf{\lambda_k}$ \\ \hline
+		k = 0 & (-5.9862,10.7599) & 3.7329 \\ \hline
+		k = 1 & (-4.4031,6.3444) & 4.6908\\
+		\hline
+	\end{tabular}
+	\caption{Results}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
