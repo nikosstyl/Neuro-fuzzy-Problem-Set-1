@@ -1,7 +1,7 @@
 % !TeX spellcheck = en_US
 \section{Problem 7}
 \subsection{Question A}
-Let an activation function be
+Let a generic activation function be
 \begin{equation}
 S(x) = \left\{
 \begin{array}{cc}
@@ -109,22 +109,71 @@ Both ELU and it's approximation are presented in figure~\ref{fig:prob7_elu}.
 
 
 \subsection{Question B}
+In order to make our calculations a bit easier, we set $g(x) = L+x$ and $i(x) = L-x$, with $\dfrac{dg(x)}{dx} = 1$, $\dfrac{di(x)}{dx} = -1$, $\dfrac{dg(x)}{dL} = 1$ and $\dfrac{di(x)}{dL} = 1$.
 
 \subsubsection{Derivative with respect to x}
+In $x \in \left[-L, L\right]$, the derivative is calculated as
 \[
 \begin{gathered}
-\dfrac{dS}{dx} = kx^{k-1} + x^k\dfrac{m\left(L+x\right)^m \left(\left(L+x\right)^{m-1} + \left(L-x\right)^{m-1}\right) - \left(L+x\right)^m \left( m\left(L+x\right)^{m-1}  + m\left(L-x\right)^{m-1}\right)}{\left( \left(L+x\right)^m + \left(L-x\right)^m \right)^2}=\\[1mm]
-= kx^{k-1}
+\dfrac{dS(x)}{x} = kx^{k-1} \dfrac{g^m(x)}{\left(g(x)+i(x)\right)^m} + \\[1mm]
++ x^k\dfrac{mg^{m-1}(x) \left( g^m(x) + i^m(x) \right) - g^m(x) \left( mg^{m-1}(x) - mi^{m-1}(x)\right)}{\left( g^m(x) + i^m(x) \right)^2} = \\[1mm]
+= kx^{k-1} \dfrac{g^m(x)}{\left(g(x)+i(x)\right)^m} + x^k \dfrac{mg^m(x) i^m(x) \left( \frac{1}{g(x)} + \frac{1}{i(x)} \right)}{\left(g^m(x) + i(x)\right)^2}
 \end{gathered}
 \]
+
+So, activation's function derivative is 
+\begin{equation}
+\frac{dS(x)}{dx} = \left\{
+\begin{array}{cc}
+	kx^{k-1} \ , & x>L\\[1mm]
+	kx^{k-1} \dfrac{g^m(x)}{\left(g(x)+i(x)\right)^m} + x^k \dfrac{mg^m(x) i^m(x) \left( \frac{1}{g(x)} + \frac{1}{i(x)} \right)}{\left(g^m(x) + i(x)\right)^2}\ , & \left|x\right| \le L\\[1mm]
+	0\ , & x<L
+\end{array}
+\right.
+\end{equation}
 
 \subsubsection{Derivative with respect to k}
 We know from algebra that $\dfrac{d}{dx}\left(a^x\right) = a^x \ln a$. So
 \[
-\dfrac{dS}{dk} = x^k \ln (k) \dfrac{\left(L+x\right)^m}{\left(L+x\right)^m + \left(L-x\right)^m} 
+\dfrac{dS}{dk} = x^k \ln (k) \dfrac{\left(L+x\right)^m}{\left(L+x\right)^m + \left(L-x\right)^m}, \quad \text{for } x \in \left[-L...L\right]
 \]
+Thus, the derivative is
+\begin{equation}
+\frac{dS(x)}{dk} = \left\{
+\begin{array}{cc}
+	x^k \ln(k) \ , & x>L\\[1mm]
+ 	x^k \ln (k) \dfrac{g^m(x)}{g^m(x) + i^m(x)}\ , & \left|x\right| \le L\\[1mm]
+	0\ , & x<L
+\end{array}
+\right.
+\end{equation}
 
 \subsubsection{Derivative with respect to L}
+This derivative is similar to that in respect to $x$, so calculating it gives us
 \[
-\dfrac{dS}{dL} = x^k + \dfrac{αρ}{παρ}
+\dfrac{dS}{dL} = x^k \dfrac{mg^{m-1}(x) \left( g^m(x) + i^m(x) \right) - g^m(x) \left( mg^{m-1}(x) + mi^{m-1}(x)\right)}{\left( g^m(x) + i^m(x) \right)^2} = 0 
 \]
+So, 
+\begin{equation}
+	\dfrac{dS(x)}{dL} = 0, \ \text{for all different L}
+\end{equation}
+
+\subsubsection{Derivative with respect to m}
+\[
+\begin{gathered}
+\dfrac{dS}{dm} = x^k\dfrac{g^{2m}(x) \ln(g(x)) +g^m(x) i^m(x) \ln (g(x)) - \left( g^{2m}(x) \ln(g(x)) + g^m(x) i^m(x) \ln(i(x)) \right)}{\left( g^m(x) + i^m(x)\right)^2} = \\[1mm]
+= \dfrac{g^m(x) i^m(x) \ln(g(x)) - g^m(x) i^m(x) \ln(i(x))}{\left(  g^m(x) + i^m(x)\right)^2} 
+= \dfrac{g^m(x) i^m(x) \ln\left(\frac{g(x)}{i(x)}\right)}{\left(  g^m(x) + i^m(x)\right)^2}
+\end{gathered}
+\]
+
+Thus, the derivative of $S(x)$ with respect to m is 
+\begin{equation}
+\dfrac{dS}{dm} = \left\{
+\begin{array}{cc}
+	0 \ , & x>L\\[1mm]
+	\dfrac{g^m(x) i^m(x) \ln\left(\frac{g(x)}{i(x)}\right)}{\left(  g^m(x) + i^m(x)\right)^2}\ , & \left|x\right| \le L\\[1mm]
+	0\ , & x<L
+\end{array}
+\right.
+\end{equation}
