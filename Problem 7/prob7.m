@@ -97,6 +97,34 @@ function [] = prob7(skip_cell, bool_export_plots)
         end
         fprintf('Finished C!\n')
     end
+
+    if skip_d == false
+        k = 1;
+        m = 0;
+        L = 0;
+
+        y = zeros(1, size(x,2));
+        i_0 = find_num(x, 0, 0.02);
+        a = 0.1;
+        y(1:i_0) = a*(exp(x(1:i_0)) - 1);
+        y(i_0:size(y,2)) = x(i_0:size(y,2));
+
+        f = calc_f(x, k, L, m);
+
+        figure;
+        plot(x, y, x, f, LineWidth = 1.2);
+        grid on;
+        xlabel('X');
+        ylabel('Y');
+        xline(0, "LineWidth", 1);
+        yline(0, "LineWidth", 1);
+        legend('ELU', 'Approximation');
+
+        if bool_export_plots == true
+            exportgraphics(gca, 'prob7_elu.pdf', 'ContentType','vector');
+        end
+        fprintf('Finished D!\n')
+    end
 end
 
 function [f] = calc_f(x, k, L, m)

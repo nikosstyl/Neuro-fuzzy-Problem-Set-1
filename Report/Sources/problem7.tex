@@ -87,6 +87,26 @@ S(x) = \left\{
 	\label{fig:prob7_relu}
 \end{figure}
 
+\subsubsection{ELU}
+ELU's equation is 
+\[
+S(x) = \left\{
+\begin{array}{cc}
+	x, & x \ge 0\\
+	\alpha \left(e^x - 1\right), & x<0\\
+\end{array}
+\right., \quad \text{with} \ \alpha=\left(0.1...0.3\right)
+\]
+From the equation above we understand that this activation function is almost the same as ReLU, with only difference being treatment of negative numbers. So, we can choose the same parameters from ReLU and still be a fairly good approximation to ELU, thus $k=1,\ L=0,\ m=0$.
+Both ELU and it's approximation are presented in figure~\ref{fig:prob7_elu}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Problem 7/prob7_elu.pdf}
+	\caption{ELU activation function and its approximation}
+	\label{fig:prob7_elu}
+\end{figure}
+
 
 \subsection{Question B}
 
@@ -106,5 +126,5 @@ We know from algebra that $\dfrac{d}{dx}\left(a^x\right) = a^x \ln a$. So
 
 \subsubsection{Derivative with respect to L}
 \[
-
+\dfrac{dS}{dL} = x^k + \dfrac{αρ}{παρ}
 \]
