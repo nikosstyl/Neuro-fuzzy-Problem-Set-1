@@ -1,14 +1,14 @@
 % !TeX spellcheck = en_US
 \section{Problem 11}
 
-Fuzzy logic is a type of logic that deals with vague, imprecise, or uncertain information. It is based on the concept of fuzzy sets, which are sets that can have any degree of membership between 0 and 1.  The value zero is used to represent complete non-membership, the value one is used to represent complete membership, and values in between are used to represent intermediate degrees of membership.This means that an element can be a member of a fuzzy set to some degree, rather than all or nothing.
+Fuzzy logic is a type of logic that deals with vague, imprecise, or uncertain information. It is based on the concept of fuzzy sets, which are sets that can have any degree of membership between $0$ and $1$.  The value $0$ is used to represent complete non-membership, the value $1$ is used to represent complete membership, and values in between are used to represent intermediate degrees of membership.This means that an element can be a member of a fuzzy set to some degree, rather than all or nothing.
 
 The uniqueness of fuzzy logic is that fuzzy logic can handle imprecise and uncertain information,which makes it a valuable tool for dealing with real-life problems that are inherently vague or fuzzy. 
 
 On this exercise, we are dealing with the linguistic variable \textit{Truth} with a possible membership set: 
 
 \begin{center}
-	\textit{T = {Absolutely false, Very false, False, Fairly true, True, Very true, Absolutely true}}
+	\textit {T = \{Absolutely false, Very false, False, Fairly true, True, Very true, Absolutely true}\}
 \end{center}
 
 Based on that set we may define the membership function of truth as:
@@ -16,6 +16,15 @@ Based on that set we may define the membership function of truth as:
 	\textit{True(u) = u \hspace{3mm}  False(u) = 1-u}
 \end{center}
 for each $u \in [0, 1]$.
+
+\subsection{Question a}
+We have the following statement: \textit{If the statement "A is true" has truth value equal to x, then the statement "A is very true" has truth value $x^2$, because the "very true" is more demanding.\\
+\textbf{Q: }Let "S" be a fuzzy set. Then "Very S" is a fuzzy subset of "S".} True or False?\\
+\textbf{A: }False. The statement "Very S is a fuzzy subset of S" is not necessarily true. In fuzzy logic, the term "very" is a linguistic modifier that acts as an intensifier. If it is applied to a fuzzy set, it does not create a subset, but changes the degrees of membership of the elements in the set. In other words, the word "very" expresses the strength of the membership function T.
+\subsection{Question b}
+"More or less" is used as an adjective to increase vagueness - the interpretation is that if "A is true" has truth value x, then "A is more or less true" has truth value $\sqrt{x}$.\\
+\textbf{Q: }Let "S" be a fuzzy set. Then "S" is a fuzzy subset of "more or less S".
+\textbf{A: }False. Just like with the statement "Very true"
 
 	
 
