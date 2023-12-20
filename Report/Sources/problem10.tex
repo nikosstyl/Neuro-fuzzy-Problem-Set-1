@@ -33,23 +33,32 @@ This architecture described beforehand is shown in figure~\ref{fig:prob10_adalin
 \end{figure}
 
 \subsection{Question c}
-%The ADALINE neural network created can be described from the following MATLAB code in listing~\ref{listing:prob10_matlab_code}. So, in order to display the final weights, we can run the algorithm and let it calculate the final wights.
 The ADALINE neural network mentioned above was coded in MATLAB. During training, we plotted its weights and bias in order to check their progression. Maximum iteration value was defined in code to be $10^4$ and minimum error to end train and consider the solutions converged is $epsilon$ of the machine, specifically $eps = 2.2204\ 10^{-16}$.
 
 After converging, the final weights and bias are presented in table~\ref{table:prob10_final_weight_bias} below. 
+Also, the decision boundary lines with the patterns are shown in figure~\ref{fig:prob10_decision_boundary}.
 
 \begin{figure}[htpb]
 	\centering
-	\begin{subfigure}[l]{0.47\textwidth}
+	\begin{subfigure}[l]{0.3\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../Problem 10/prob10_adaline_weights.pdf}
+		\caption{}
 	\end{subfigure}
 	\hspace{1mm}
-	\begin{subfigure}[r]{0.47\textwidth}
+	\begin{subfigure}[c]{0.3\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{../Problem 10/prob10_adaline_biases.pdf}
+		\caption{}
 	\end{subfigure}
-	\caption{Plots of weights and biases during training}
+	\hspace{1mm}
+	\begin{subfigure}[l]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../Problem 10/prob10_adaline_decision_boundary.pdf}
+		\caption{}
+		\label{fig:prob10_decision_boundary}
+	\end{subfigure}
+	\caption{Plots of weights, biases and decision boundary}
 	\label{fig:prob10_plot_weights_biases}
 \end{figure}
 

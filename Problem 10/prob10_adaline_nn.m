@@ -65,7 +65,6 @@ function [weights, bias, epoch] = prob10_adaline_nn(bool_export_plots)
         mean_squared_error = total_error / size(inputs, 2);
 
         plot(a1, epoch, weights(1), 'x', 'Color', [0.00,0.45,0.74]);
-        hold(a1,'on');
         plot(a1, epoch, weights(2), '*', 'Color', [0.85,0.33,0.10]);
         plot(a2, epoch, bias, 'o', 'Color', [0.93,0.69,0.13]);
 
@@ -77,13 +76,30 @@ function [weights, bias, epoch] = prob10_adaline_nn(bool_export_plots)
         mean_squared_error_old = mean_squared_error;
     end
     legend(a1, 'w_1', 'w_2');
+    box(a1, "on");
+    box(a2, "on");
     hold(a1, "off");
     hold(a2, "off");
 
+    figure;
+    a3 = axes;
+    x = linspace(-1, 2.5);
+    y = -(weights(1)*x + bias) / weights(2);
+    plot(a3, x, y, 'Color', [0.47,0.67,0.19], 'LineWidth', 1.2);
+    set(a3, "FontName", "Times New Roman");
+    grid(a3, 'on');
+    xlabel(a3, "X", "FontName", "Times New Roman");
+    ylabel(a3, "Y", "FontName", "Times New Roman");
+    hold on;
+    plot(a3, class_A(:, 1), class_A(:, 2), '*', 'Color', [0.00,0.45,0.74], 'MarkerSize', 10);
+    plot(a3, class_B(:, 1), class_B(:, 2), 'x', 'Color', [0.85,0.33,0.10], 'MarkerSize', 10);
+    title(a3, "Decision Boundary", "FontName", "Times New Roman");
+    hold off;
 
-    if bool_export_plots
+    if bool_export_plots == true
         % pause;
         exportgraphics(a1, "prob10_adaline_weights.pdf", 'ContentType', 'vector');
         exportgraphics(a2, "prob10_adaline_biases.pdf", 'ContentType', 'vector');
+        exportgraphics(a3, "prob10_adaline_decision_boundary.pdf", 'ContentType', 'vector');
     end
 end
