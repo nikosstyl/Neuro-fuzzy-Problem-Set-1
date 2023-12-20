@@ -11,7 +11,7 @@ S(x) = \left\{
 \end{array}
 \right.
 \end{equation}
-This function has some parameters $k,L,m$ called hyperparameters. Using them, this function can approximate others.
+This function has some parameters $k,L,m$ called hyperparameters. By using them, this function can approximate others.
 
 \subsubsection{Swish}
 %Swish: $k=1, \ L=2e, \ m=e$\\
@@ -115,7 +115,7 @@ In order to make our calculations a bit easier, we set $g(x) = L+x$ and $i(x) = 
 In $x \in \left[-L, L\right]$, the derivative is calculated as
 \[
 \begin{gathered}
-\dfrac{dS(x)}{x} = kx^{k-1} \dfrac{g^m(x)}{\left(g(x)+i(x)\right)^m} + \\[1mm]
+\dfrac{dS(x)}{dx} = kx^{k-1} \dfrac{g^m(x)}{\left(g(x)+i(x)\right)^m} + \\[1mm]
 + x^k\dfrac{mg^{m-1}(x) \left( g^m(x) + i^m(x) \right) - g^m(x) \left( mg^{m-1}(x) - mi^{m-1}(x)\right)}{\left( g^m(x) + i^m(x) \right)^2} = \\[1mm]
 = kx^{k-1} \dfrac{g^m(x)}{\left(g(x)+i(x)\right)^m} + x^k \dfrac{mg^m(x) i^m(x) \left( \frac{1}{g(x)} + \frac{1}{i(x)} \right)}{\left(g^m(x) + i(x)\right)^2}
 \end{gathered}

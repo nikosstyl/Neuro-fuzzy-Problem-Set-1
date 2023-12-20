@@ -32,6 +32,20 @@ end
 \end{figure}
 
 A general formula of a quadratic equation is $f(x,y) = ax^2 + 2bxy + cy^2$. Writing our formula in the previous form, we find that $a=1, \MathSpace b=2, \MathSpace c=1$.
+The linear quadratic form can be expressed as $Q(x) = x^T Ax$, so in our case we have 
+\[
+f(x) = \left[x \ y\right] \ \left[
+\begin{array}{cc}
+	1 & 2 \\
+	2 & 1	
+\end{array}
+\right] \ \left[
+\begin{array}{c}
+	x\\y
+\end{array}
+\right]
+\]
+where $x$ is the column vector of variables and $A$ is a symmetric matrix.
 Calculation of the discriminant can help us calculate the location of the function's local minimum/maximum.
 
 \begin{equation}

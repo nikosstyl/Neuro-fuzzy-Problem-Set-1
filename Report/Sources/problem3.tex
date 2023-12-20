@@ -9,7 +9,7 @@ x_{k+1} = 1 - ax^2_k + bx_{k-1}
 A lot of dynamic systems transition into chaos as gain or control is increased to a certain point and this system falls into this category.
 In this problem, we will plot the trajectories of sequences $x_0 ... x_i$ and describe it.
 
-The first parameters are (a,b) = (0.3, 0.4) and the trajectories of the sequences are presented in figure~\ref{fig:prob3_x_init}.
+The first parameters are $(a,b) = (0.3, 0.4)$ and the trajectories of the sequences are presented in figure~\ref{fig:prob3_x_init}.
 
 \begin{figure}[htpb]
 	\centering
@@ -24,10 +24,10 @@ The first parameters are (a,b) = (0.3, 0.4) and the trajectories of the sequence
 		\includegraphics[width=\textwidth]{../Problem 3/prob3_x_init_1e-5.pdf}
 		\caption{}
 	\end{subfigure}
-	\caption{Trajectories of Henon map's sequence with (a,b) = (0.3, 0.4)}
+	\caption{Trajectories of Henon map's sequence with $(a,b) = (0.3, 0.4)$}
 	\label{fig:prob3_x_init}
 \end{figure}
-From the produced plots, this system with parameters (0.3, 0.4) is periodic after converging.
+From the produced plots, this system with parameters $(0.3, 0.4)$ is periodic after converging to a specific amplitude and frequency oscillation.
 
 \subsection{Multiple a values}
 Figure~\ref{fig:prob3_multiple_a} shows output of the sequence for different values of $a$ and $b=0$. When $a \le 0.6$, the output swings for a bit and then stabilizes to a fixed number, with that number decreasing while $a$ approaches $0.6$.
@@ -41,12 +41,12 @@ Figure~\ref{fig:prob3_multiple_a} shows output of the sequence for different val
 \end{figure}
 
 When $a \ge 0.8$, output starts to oscillate. As $a$ approaches $1$, the oscillation's amplitude is getting bigger until it reaches value $1$.
-After $a$ surpasses $1$, the oscillation starts to break down, as shown in the last two sub-figures. The greater $a$, the greater the disturbance on the oscillation thus chaos is created.
+After $a$ surpasses $1$, the oscillation starts to break down, as shown in the last two sub-figures. The greater the $a$, the greater the disturbance on the oscillation thus chaos is created.
 
 \subsection{Multiple initial x values}
 
 Figure~\ref{fig:prob3_multiple_x_multiple_b} shows the trajectory of sequences with different $x_{init}$ and $b$, with $a = c, \ \text{where} \ c = 0.3$ from previous question.
-Inspecting this figure, we can understand some things about those parameters and what they affect on the system, as even with $b=0$, the system performs a damped oscillation for the first 50 (at most) $x_i$.
+Inspecting this figure, we can understand some things about those parameters and their affect on the system, as even with $b=0$, the system performs a damped oscillation for the first 50 (at most) $x_i$.
 For a given $x_{init}$ (ie. $0$), increasing $b$ increases the amplitude of oscillation as well as the overshoot percentage (if we see it as an system response).
 
 \textit{\footnotesize PS: Overshoot \% is the percentage of system's maximum value that surpasses its steady-state value over the latter.}
@@ -100,7 +100,7 @@ By setting these values to the system in figure~\ref{fig:prob3_c}, we observe th
 
 \subsection{Multiple a values}
 
-By changing $a$ parameter, we can recognize and characterize the output of the system. By observing the figure~\ref{fig:prob3_d_multiple_a}, we can understand that by increasing the parameter's value the oscillation duration increases. At first, (when $a$ is smaller to $b$), the system oscillates for a bit and then dampens around a fixed number. But the more $a$ approaches $b$, the longer the oscillation lasts until the moment when $a=b$.
+By changing parameter $a$, we can recognize and characterize the output of the system. By observing the figure~\ref{fig:prob3_d_multiple_a}, we can understand that by increasing the parameter's value the oscillation duration increases. At first, (when $a$ is smaller than $b$), the system oscillates for a bit and then dampens around a fixed number. But the more $a$ approaches $b$, the longer the oscillation lasts until the moment when $a=b$.
 From this value and beyond, the oscillation continues for all $x_i$. As $a$ increases beyond $b$, the oscillations begin to deteriorate, and beyond a certain point of a, chaos ensues.
 \begin{figure}[H]
 	\centering

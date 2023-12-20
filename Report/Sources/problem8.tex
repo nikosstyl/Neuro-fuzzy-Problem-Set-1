@@ -200,7 +200,7 @@ as shown in figures \ref{fig:prob_8_2d} and \ref{fig:prob_8_3d}\\
 	\end{subfigure}	
 \end{figure}
 
-\vspace{2cm}
+%\vspace{2cm}
 \subsection{Question c}
 \label{Questionc}
 A decision boundary is a hypersurface that separates different classes in a classification problem.\\
@@ -221,12 +221,12 @@ $x^*$ is the strong minimum, a stationary point that is indeed the center of the
 So, in order to find the optimal decision boundary we follow the mentioned steps:
 \begin{itemize}
 	\item $f(x) = W^T \cdot x^*$
-	\item Set f(x) = 0
-	\item Calculate $x^* = R^-1 \cdot h$
-	\item Replace the value in f(x)
+	\item Set $f(x) = 0$
+	\item Calculate $x^* = R^{-1} \cdot h$
+	\item Replace the value in $f(x)$
 \end{itemize}
 
-By calculating $x^* = R^-1 \cdot h$ we get that $x^* = \left[\begin{array}{c}
+By calculating $x^* = R^{-1} \cdot h$ we get that $x^* = \left[\begin{array}{c}
 															4.2370 \\
 															4.7185 \\
 														\end{array}
@@ -248,7 +248,7 @@ From the figure \ref{fig:patterns} it is obvious that the optimal decision bound
 
 \subsection{Question d}
 The maximum stable learning rate for the LMS algorithm can be calculated by
-$lr_{max} = \dfrac{1}{\lambda_{max}}$ , where ${\lambda_{max}}$ is the largest eigenvalue of the correlation matrix R. With the help of matlab i calculated and found that the eigenvalue matrix of R is 
+$lr_{max} = \dfrac{1}{\lambda_{max}}$ , where ${\lambda_{max}}$ is the largest eigenvalue of the correlation matrix R. With the help of Matlab I calculated and found that the eigenvalue matrix of R is 
 
  \[
  eigenvalue = \left[
@@ -262,7 +262,7 @@ Thus the largest eigenvalue is ${\lambda_{max}} = 17.5707$ and in conclusion the
 \\
 
 As we have already mentioned, the learning rate is related to the correlation matrix R. The matrix R depends only on the properties of the input data -$R = E[p \cdot p^T]$ - and not on the output. The learning rate does not depend on the target values but on the properties of the input data.\\
-This means that, changing the target values could potentially affect the convergence of the LMS algorithm and the final solution.However, the maximum stable learning rate itself, as a parameter of the algorithm, would not be directly affected by changes in the target values.\\
+This means that, by changing the target values it could potentially affect the convergence of the LMS algorithm and the final solution.However, the maximum stable learning rate itself, as a parameter of the algorithm, would not be directly affected by changes in the target values.\\
 
 \vspace{2mm}
 
@@ -284,7 +284,7 @@ To perform one iteration of the LMS algorithm we will need a learning rate, the 
 	\end{array}
 	\right]
 	$
-	\item Learning rate: lr = 0.05
+	\item Learning rate: $lr = 0.05$
 \end{itemize}
 For a single-layer ADALINE network we recall the rule
 \begin{center}

@@ -76,15 +76,15 @@ S(x) =  x \MathSpace \tanh\left(\ln\left(1+e^x\right)\right) = x \MathSpace \tan
 By calculating the derivative of this function as is, we get 
 \[
 \begin{gathered}
-\frac{dS}{dx} = \tanh(g(x)) + x \ \tanh^{'} (g(x)) \ \frac{dg}{x} = \tanh(g(x)) + x\ \tanh^{'} (g(x)) \ \frac{1}{1+e^{-x}} =\\ 
+\frac{dS}{dx} = \tanh(g(x)) + x \ \tanh^{'} (g(x)) \ \frac{dg}{dx} = \tanh(g(x)) + x\ \tanh^{'} (g(x)) \ \frac{1}{1+e^{-x}} =\\ 
 = \tanh(g(x)) + \tanh^{'} (g(x)) \ x\ \frac{\text{Swish}(x)}{x} = \frac{S(x)}{x} + \tanh^{'} (g(x)) \ \text{Swish}(x) = \\
 = \frac{S(x)}{x} + (1 - \tanh^{2} (g(x))) \ \text{Swish}(x) = \frac{S(x)}{x} + \text{Swish}(x) - \tanh^{2} (g(x)) \ \text{Swish}(x)
 \end{gathered}
 \]
-So, $\phi(x,S)$ is 
+So, the derivative is 
 \begin{equation}
-\begin{gathered}
-\frac{S(x)}{x} + \text{Swish}(x) - \frac{S^2(x)}{x^2} \ \text{Swish}(x), \quad \text{where}\\
-S(x) \text{ is the activation function and Swish}(x) \text{ is the Swish activation function from before}
-\end{gathered}
+%\begin{gathered}
+\frac{dS}{dx} = \frac{S(x)}{x} + \text{Swish}(x) - \frac{S^2(x)}{x^2} \ \text{Swish}(x)
+%\end{gathered}
 \end{equation}
+where $S(x)$ is the activation function and Swish$(x)$ is the Swish activation function from before.
