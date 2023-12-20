@@ -58,8 +58,8 @@ function [weights, bias, epoch] = prob10_adaline_nn(bool_export_plots)
             total_error = total_error + error^2;
             
             % Update the weights and bias
-            weights = weights + learning_rate * error * inputs(:, i)';
-            bias = bias + learning_rate * error;
+            weights = weights + 2*learning_rate * error * inputs(:, i)';
+            bias = bias + 2*learning_rate * error;
         end
 
         mean_squared_error = total_error / size(inputs, 2);
