@@ -1,3 +1,16 @@
 % !TeX spellcheck = en_US
 
 \section{Problem 6}
+
+We are interested in comparing the gradient descent optimizer for different values of the batch size \\
+$n_b = 1,\ n,\ \phi(n) << n$. 
+
+These observations can be explained by understanding the trade-offs between the different variants of gradient descent:
+\begin{itemize}
+	\item \textbf{Stochastic Gradient Descent ($n_b=1$)}: SGD updates the parameters for each training example, which introduces a lot of noise into the learning process. This noise can help to avoid shallow local minima, which can lead to better convergence to the global minimum. However, the learning process can be slow due to the high variance in the updates.
+	\item \textbf{Batch Gradient Descent ($n_b=n$)}: GD updates the parameters based on all training examples, reducing noise in the learning process and giving a clear direction to the minimum. However, it can get stuck in flat, non-optimal minima and converges slower than SGD when the data set is large.
+	\item \textbf{Mini-Batch Gradient Descent ($n_b=\phi(n) << n$)}: BGD is a compromise between SGD and GD. It updates the parameters based on a subset of the training examples, which reduces noise compared to SGD and enables faster calculation compared to GD. This can lead to faster convergence and a smaller value of the objective function.
+\end{itemize}
+
+The observation that increasing the batch size from $n_b=1$ to $n_b=\frac{n}{10}$ improves the results can be explained by the fact that BGD can benefit from the advantages of both SGD and GD. It can avoid flat minima caused by minibatch noise (like SGD) and it can calculate the gradient more accurately than SGD by averaging over a minibatch.\\
+The observation that convergence slows down when the batch size is increased from $\frac{n}{10}$ to $n$ can be explained by the fact that GD can get stuck in shallow minima and may not explore the parameter space as effectively as BGD or SGD. In addition, GD can be computationally intensive with large data sets, which can slow down the learning process.
